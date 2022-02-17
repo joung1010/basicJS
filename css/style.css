@@ -21,7 +21,7 @@
     --font-micro: 14px;
     /* Font weight */
     --weight-bold: 700;
-    --weight-semi-bold: 600;
+    --weight-semi-bold: 550;
     --weight-regular: 400;
     /* radius */
     --border-radius:4px;
@@ -45,6 +45,20 @@ button {
     background-color: transparent;
     border: none;
     outline: none;
+}
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+}
+h2 {
+    font-size: var(--font-medium);
+    font-weight: var(--weight-bold);
+}
+
+p {
+    font-size: var(--font-regular);
+    margin: auto;
+    color: var(--color-black);
 }
 /*Nav*/
 #navbar {
@@ -101,11 +115,9 @@ button {
     border-radius: 50%;
 }
 .home__title {
-    font-size: var(--font-large);
     color: var(--color-white);
 }
 .home__description {
-    font-size: var(--font-medium);
     color: var(--color-white);
 }
 .home__btn {
@@ -114,4 +126,76 @@ button {
     padding: 7px;
     border-radius: 4px;
     color: var(--border-radius);
+    font-weight: var(--weight-bold);
+}
+.section {
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+.section_container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about__majors {
+    display: flex;
+    justify-content: space-evenly;
+}
+.major {
+    margin: 40px;
+
+}
+.about__description {
+    text-align: center;
+}
+
+.major__icon {
+    border: 2px solid var(--color-dark-pink);
+    font-size: var(--font-large);
+    border-radius: 50%;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    color: var(--color-pink);
+    margin: auto;
+}
+.major__title {
+    margin: 10px 0;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
+}
+.major__etc {
+    font-size: var(--font-regular);
+}
+.about__careers {
+    width: 100%;
+}
+.career {
+    display: flex;
+    align-items: center;
+}
+.career__img {
+    text-align: left;
+    width: 150px;
+    height: 150px;
+}
+.career__details {
+    margin: 0 30px;
+}
+
+.career__title, .career__duration {
+    text-align: left;
+    font-size: var(--font-small);
+    font-weight: var(--weight-regular);
+}
+.about__title {
+    margin-top: 0;
 }
