@@ -74,6 +74,39 @@ console.log(`Value: ${count}, type: ${typeof count}`);
 //2. Object: primitive 타입 여러개를  하나의 object로 관리
 //3.function: first-class function 이란 함수를 변수로,파라미터 또 return으로 반환 가능한 형태
 
+//Javascript 에서 숫자형은 모두 number
+//* 숫자 번위가 -2^53 ~ 2^53인데 이보다 큰값은 뒤에 n을 붙혀 bigInt 타입으로 변환한다.
+
+//Javascript 에서 문자형은 모두 String
+
+//boolean
+//true: any other value
+//false: 0, null. undefined, NaN, ''
+
+//null
+let nothing = null;
+// 값이 아무것도 없이 빈값이다.
+
+//undefined
+let x;
+// 아지 값이 정해지지 않았다.
+
+//5. Dynamic typing: 런타입때 할당된 값에 따라 자료형이 정해진다.
+let text = 'hello';
+console.log(text);
+text = 1;
+console.log(text);
+text = '7'+5;
+console.log(text);
+// 값 75 자료형 string
+text = '8'/'2';
+//값 4: 자료형 number;
+
+
+
+
+
+
 
 
 
