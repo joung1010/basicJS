@@ -51,3 +51,35 @@ onsole.log(age)
 *   2. block 스코프를 무시
 *   해당 블록에서 선언하고 그밖에서도 사용가능하다
 * */
+
+
+/*
+* 3. Costants
+* 한번 값을 할당하면 다신 변경 불가
+* */
+
+const count = 17;
+const size = 17.1;
+// template literal `` <- 사용
+console.log(`Value: ${count}, type: ${typeof count}`);
+/*
+* 값이 할당되고 다시 변경되지 않는 데이터 타입을 사용하자
+* 1. 보안성
+* 2. 스레드에 대한 안전성
+* 3. 사람의 싫수를 줄이기 위해서
+* */
+
+//4. Variable type
+//1. primitive : number String, boolean, symbol, null, undefined
+//2. Object: primitive 타입 여러개를  하나의 object로 관리
+//3.function: first-class function 이란 함수를 변수로,파라미터 또 return으로 반환 가능한 형태
+
+
+
+
+
+
+
+
+
+
