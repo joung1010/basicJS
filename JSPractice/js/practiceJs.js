@@ -69,6 +69,16 @@ console.log(`Value: ${count}, type: ${typeof count}`);
 * 3. 사람의 싫수를 줄이기 위해서
 * */
 
+// Immutable data Type: 한번 값이 저장되면 읽기만 가능
+// mutable type: 값을 읽고 쓰기 가능
+
+//이때 primitive type과 object type이 메모리에 저장되는 방식이 다르다
+// primitive 타입은 그 값이 그대로 메모르에 정장되는 반면에
+// object 타입은 한번에 메모리에 올라가기에는 그값이 커서
+// 실제 object안의 변수가 실제 가리키는 값에 위치가 저장된다.
+
+
+
 //4. Variable type
 //1. primitive : number String, boolean, symbol, null, undefined
 //2. Object: primitive 타입 여러개를  하나의 object로 관리
