@@ -81,7 +81,43 @@ console.log(a1.publisher); // undefined -> a1의 객체 안에는 publisher가 �
 console.log(Article.publisher);
 // 즉 static 키워드가 붙은 친구들은 객체에 정의된것이 아닌 클래스 자체에 정의되어져 있는 친구들이다.
 
+//상속 다양성
 
+class Shape {
+    constructor(width,height,color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
+    }
+    draw(){console.log(`drawing ${this.color} color`)}
+    getArea(){return this.width * this.height;}
+}
+
+class Rectangle extends Shape{} // extends 상속 키워드
+class Triangle extends  Shape{
+    draw() {
+        super.draw();  //super 부모 클래스 호출
+        console.log('삼각형이요')
+    }
+
+    getArea() {
+        return (this.width*this.height) /2 ; //오버 라이딩 : 부모 클래스 함수 재정의
+    }
+}
+
+const rectangle = new Rectangle(20, 20, 'blue');
+rectangle.draw();
+console.log(rectangle.getArea());
+const triangle = new Triangle(20,20,'red');
+triangle.draw();
+console.log(triangle.getArea());
+
+console.log(rectangle instanceof Rectangle);
+console.log(triangle instanceof Rectangle);
+console.log(triangle instanceof Triangle);
+console.log(triangle instanceof Shape);
+console.log(triangle instanceof Object);
+console.log(triangle.toString() );
 
 
 
