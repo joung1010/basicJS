@@ -57,6 +57,88 @@ printvalue1(mason, 'age');
 // 즉 동적으로 어떤 key의 value를 받아올대 사용
 
 
+//3. Property value shorthand
+const person1 = {name:'bob', age: 3}
+const person2 = {name:'steve', age: 4}
+const person3 = {name:'bon', age: 5}
+//다음 객체를 생성할때 마다 동일한 key 와 value가 반복된다 좀더 편한 방법이 없을까?
+// -> 함수를 사용한다
+
+function makePerson(name, age) {
+    return {name,age};
+}
+
+const person4 = makePerson('mason', 5);
+console.log(person4);
+// 근데 우리는 이렇게 객체를 생성으로 만들어진 함수를 Constructor function 생성자 함수라고 한다
+// 생성자 함수는 보통 첫글자를 대문자로 쓰고 사용은 new 키워드와 함께 사용
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const person5 = new Person('bob', 5);
+console.log(person5);
+
+// in operator : 해당 key 값이 해당 객체에 있는지 없는지 체크해준다
+console.log('name' in mason);
+console.log('age' in mason);
+console.log('wing' in mason);
+
+// 또 다른 for(key in obj), for(value of iterable)
+
+console.clear();
+for ( const key in mason) {
+    console.log(key);
+}
+// mason 객체의 key 값을 순차적으로 key value 에 할당한다
+
+const array = [1, 2, 3, 4];
+for (const number of array) {
+    console.log(number);
+}
+// of 키워드는 배열이나 list 자료형일 때 사용
+
+ // cloning
+
+const user = {name:'mason', age: '20'};
+const user2 = user;
+// -> 메모리에서 user 는 name 과 age 를 가라키는 주소 값이 할당되어있다
+// user2역시 user 와 같은 주소가 들어있기때문에 같은 속성들을 가리킨다
+
+user2.name = 'coder';
+console.log(user); // -> name의 값이 coder 로 변경되어있음
+
+//진짜 객체를 복사하는 방법
+//old version
+
+const user3 = {};
+for (const key in user) {
+    user3[key] = user[key];
+}
+console.log(user3);
+
+//2. Object.assign 사용
+
+const user4 = Object.assign({}, user);
+console.log(user4);
+const user5= {};
+Object.assign(user5,user);
+
+//만약 동일한 키 값을 가지고 있는 경우 어떻게 될까???
+
+
+const fruit1 = {color: 'red'};
+const fruit2 = {color: 'blue', size: 'big'};
+
+const mix = Object.assign({}, fruit1, fruit2);
+
+mix.color //?? blue!! 가장 오른쪽에 있는 객체의 키값을 계속 덮어쓰기한다!!
+
+
+
+
 
 
 
