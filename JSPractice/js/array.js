@@ -46,6 +46,69 @@ animal.forEach(function (animal,index,array){
 
 animal.forEach((animal, index) => console.log(animal, index));
 
+//4. Addtion , deletion , copy
+//add an item to the end
+//push : add an item to the end
+animal.push('🐯', '🦎');
+console.log(animal);
+// pop : remove an item from the end
+animal.pop();
+animal.pop();
+console.log(animal);
+
+// unshift : add an item to the begin
+animal.unshift('🐯', '🦎');
+console.log(animal);
+
+//shift : remove an item from the begin
+animal.shift();
+animal.shift();
+console.log(animal);
+
+// shift , unshift는 pop , push 보다 속도가 매우 느리다
+// why?? -> 배열을 맨뒤에 추가되거나 삭제되는것은 기존 배열데이터들은  아무 이동없이 진행된다
+// 하지만 맨앞인덱스에 추가하거나 삭제될시 기존 인덱스들은 다음 인덱스로 이동되고 맨앞 인덱스의 기존값은 삭제된다
+// 즉 다른 기존 데이터들이  많은 이동을 하기때문에 속도가 느리다!.
+
+// splice: 특정인데스 지우고 추가하기
+
+animal.push('🐯', '🦎');
+console.log(animal);
+// 삭제할 인덱스, 지우고싶은 개수, 추가할 값
+// 기본적으로 삭제할 인덱스만주면 그인덱스 부터 뒤에 있는 모든 내용을 삭제
+animal.splice(1);
+
+animal.push('🐯', '🦎');
+animal.splice(1,1);
+console.log(animal);
+animal.splice(1,1,'🐨','🐟'); //지우고 추가도 가능
+
+//배열 합차기 : concat;
+
+const animal2 =['🦝','🐢'];
+
+const newAnimal = animal.concat(animal2);
+console.log(newAnimal);
+
+// concat API : 1개이상의 배열을 합칠때 사용 return 으로 새로운 배열
+console.clear();
+
+//5. searching
+// find the index;
+console.log(animal);
+
+//index of
+console.log(animal.indexOf('😼')); //0
+console.log(animal.indexOf('🦈')); // -1 없으면 -1
+//include
+console.log(animal.includes('😼')) // 있으면 true
+console.log(animal.includes('🦈')) // 없으면 false
+//lastIndexOf
+console.clear();
+animal.push('😼');
+console.log(animal.indexOf('😼')); //0 해당 값을 처음으로 가지고 있는 index 반환
+console.log(animal.lastIndexOf('😼')); //3 해당 값을 마지막으로 가지고 있는 index 반환
+
 
 
 
