@@ -92,18 +92,35 @@ const students = [
     const result2 = students.every((student) => student.score <50);
     console.log(result2);
 }
-
+console.clear();
 // Q9. compute students' average score
-{
+{   //reduce
+    // callback(return 값을 누적해서 전달) return 값이 콜백함수의 이전값으로 전달된다.
+    // , initalValue
+    const result = students.reduce((prev,curr)=>{return prev + curr.score},0);
+    console.log(result);
+    const average = result/students.length;
+    console.log(average);
 }
 
 // Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 {
+    const result = students
+        .map((student) => student.score)
+        .filter((scroe) => scroe>=50)
+        .join();
+    console.log(result);
 }
 
 // Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
 {
+    // sort callback 함수로 이전값과 현재값을 받고 a-b인 값이 음수가되면 첫번째가 그다음값보다 작다고 간주되고 정렬이된다.
+    const result = students
+        .map((student) => student.score)
+        .sort((a,b) => a-b)
+        .join();
+    console.log(result);
 }
 
