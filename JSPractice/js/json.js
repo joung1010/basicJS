@@ -30,6 +30,49 @@ let json = JSON.stringify(true);
 console.log(json);
 
 json = JSON.stringify(['apple', 'banana']);
+console.log(json);
+
+//객체를 변환
+
+const rabit = {
+    name: 'tori',
+    color: 'white',
+    size: null,
+    birthday: new Date(),
+    jump: function (){
+        console.log(`${this.name} is jump`);}
+};
+json = JSON.stringify(rabit);
+console.log(json);
+//stringify 함수는 원하는 속성값만을 뽑아서 json을 만들 수 있다 []형식 또는 callback함수를 이용해서
+let json2 = JSON.stringify(rabit,['name','color']);
+console.log(json2);
+
+//call back 함수는 인자로 key value 모두 받는다 첫번재는 객체 그자체의 값을 받는다
+json = JSON.stringify(rabit,(key , value) => {
+        console.log(`key : ${key} value : ${value}`)
+    return key === 'name' ? 'mason' : value;
+    }
+);
+console.log(json);
+
 
 //2. Json to Object
 //parse
+console.clear();
+json = JSON.stringify(rabit);
+console.log(json);
+const obj = JSON.parse(json);
+console.log(obj);
+
+// 기존에 rabit이라는 객체에는 함수가 존재 하지만 우리가 변환한 obj 객체는 함수가 존재하지 않는다
+// 그이유는 직렬화된 string값을 객체로 전환 했기때문에 즉 우리가 rabit을 json으로 변환할떄 함수는 포함되어 있지 않기 때문이다.
+rabit.jump();
+//obj.jump();
+
+console.log(rabit.birthday.getDay()); // birthday 는 new로 만들어진 Date 객체
+//console.log(obj.birthday.getDay()); // 에러 이유는 obj의 birthday는 string 이기때문이다
+// 해결 방법
+const obj2 = JSON.parse(json,(key,value) =>  key === 'birthday' ? new Date() : value);
+console.log(obj2.birthday.getDay());
+
