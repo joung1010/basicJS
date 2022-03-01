@@ -76,3 +76,4 @@ console.log(rabit.birthday.getDay()); // birthday 는 new로 만들어진 Date �
 const obj2 = JSON.parse(json,(key,value) =>  key === 'birthday' ? new Date() : value);
 console.log(obj2.birthday.getDay());
 
+// 오류 발견 객체 내에서 화살표 함수를 쓰면 해당 객체의 속성값을 읽어 오지 못한다
