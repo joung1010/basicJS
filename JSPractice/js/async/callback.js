@@ -50,9 +50,10 @@ printImmediately(() => console.log("action immediately"))
 //2. Asynchronous callback
 
 function printWithDelay(print, time) {
-    setTimeout(print,time);
+    setTimeout(print, time);
 }
-printWithDelay(() => console.log('Asynchronous call'),2000);
+
+printWithDelay(() => console.log('Asynchronous call'), 2000);
 // JS 실행 순서
 /*  1. 호이스팅으로 함수 선언이 가장 상단으로 호출 된다
 *    function printImmediately(print) {
@@ -81,7 +82,58 @@ printWithDelay(() => console.log('Asynchronous call'),2000);
     * // 결과 1, 2 , 3, 4, 6, action immediately, 5, Asynchronous call
 * */
 
+console.clear();
+//callback 지옥 체험 하기 ㅋㅋ
 
+class UserStorage {
+    loginUser(id, password, onSuccess, onError) {
+        setTimeout(() => {
+            if ((id === 'mason' && password === 'front')
+                || (id === 'park' && password === 'back')
+            ) {
+                onSuccess(id);
+            } else {
+                onError(new Error('not found'));
+            }
+        },2000);
+    }
+
+    getRole(user, onSuccess, onError) {
+        setTimeout(() => {
+            if (user === 'mason') {
+                onSuccess({name: 'mason', role: 'admin'});
+            } else {
+                onError(new Error('no access'));
+            }
+        }, 1000);
+    }
+}
+
+//1. id, password 받기
+const user = new UserStorage();
+const id = prompt('enter your id');
+const password = prompt('enter your password');
+
+// 2. login 성공하면 역항을 다시 받아오자
+// 3. role 받기
+
+// 4. 객체 출력
+
+user.loginUser(id,password,
+    (id) => {
+        user.getRole(id,
+            (user) => {
+            alert(`hello ${user.name}, you have a ${user.role}`);
+            },
+            (error) => console.log(error)
+            );
+    },
+    (error) => {console.log(error)}
+);
+
+// -> 1. 문제점 가독성이 너무 안좋다.
+//    2. 디버깅이 어렵다
+//    3. 에러가 발생했을때 발생 시점을 찾기가 어렵다
 
 
 
