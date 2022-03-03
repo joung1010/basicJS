@@ -46,3 +46,40 @@ promise
 })
     .finally(()=> console.log("finish")); //성공 실패여부와 상관없이 무조건 호출
 // then은 성공한 결과값을 받아서 promise를 호출하고 그 호출된 promise의 catch함수를 호출 (training)
+
+
+
+//3. promise chaining
+
+const fetchNum = new Promise((resolve, reject) => setTimeout(() => resolve(1), 2000));
+
+fetchNum.then((num) => num * 2) // -> 1*2 =  2
+    .then((num) => num * 3)     // -> 2*3 =  6
+    .then(num => {
+        return new Promise((resolve, reject) => setTimeout(() => resolve(num - 1), 1000));
+    })
+    .then((num) => console.log(`num: ${num}`));
+
+// then은 바로 값을 전달해도 되고 새로운 프로미스를(다른 비동기를 처리 해서) 전달해도된다.
+
+// 4. Error Handling
+const getHen = () => new Promise((resolve, reject) =>
+setTimeout(()=> resolve('닭'),1000)
+);
+
+const getEgg = hen =>
+    new Promise((resolve, reject) =>
+        /*setTimeout(() => resolve(`${hen} => 계란`),1000)*/
+        setTimeout(() => reject(new Error(`Error!! ${hen} => 계란`)),1000)
+);
+
+const cook = egg => new Promise((resolve, reject) => setTimeout(() => resolve(`${egg} => 후라이`),1000));
+
+
+getHen()
+    .then(getEgg) // -> === then( egg => getEgg(egg) ) 특정 값을 받아서 바로 콜백함수를 실행하는겨우 그 파라미터를 생략가능하다
+    .catch(error => '계란 대신 빵')//  에러발생시 다른 값으로 대체함으로 써 전체 채인이 문제 없이 동작하게됨 , then절 다음에 에러를 처리하고싶을때 바로 catch절 이용
+    .then(cook)
+    .then(console.log);
+
+// call back hell을 수정해보자
