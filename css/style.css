@@ -200,3 +200,51 @@ p {
     margin-top: 0;
 }
 /* skills */
+#skills {
+    background-color: var(--color-yellow);
+    text-align: center;
+    margin: 30px 0;
+}
+
+.my_skill {
+    display: flex;
+    color: var(--color-white);
+    justify-content: center;
+    margin-top: 20px;
+}
+.my_skill__left {
+    flex-basis: 60%;
+    background-color: var(--color-dark-grey);
+    padding:0 20px;
+}
+.skill_description {
+    display: flex;
+    justify-content: space-between;
+}
+.skill_level {
+    height: 5px;
+    background-color: var(--color-grey);
+    margin-bottom: 10px;
+}
+.level-bar {
+    background-color: var(--color-orange);
+    height: 5px;
+}
+.my_skill__right {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.tools {
+    background-color: var(--color-grey);
+}
+.etcs {
+    background-color: var(--color-light-grey);
+}
+.tool, .etc {
+    padding: 0;
+}
+
+.tool li, etc li {
+    margin-bottom: 5px;
+}
