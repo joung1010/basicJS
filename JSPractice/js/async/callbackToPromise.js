@@ -28,16 +28,23 @@ class UserStorage {
     }
 }
 
-const user = new UserStorage();
+// const user = new UserStorage();
 const id = prompt('enter your id');
 const password = prompt('enter your password');
 
-user
-    .loginUser(id,password)
-    .then(user.getRole)
-    .then(user => alert(`hello ${user.name}, you have a ${user.role}`))
-    .catch(console.log);
 
+async function checkUser(id, password) {
+    const user = new UserStorage();
+    try {
+        const loginUser = await user.loginUser(id, password);
+        console.log(loginUser);
+        return await user.getRole(loginUser);
+    } catch (error){console.log(error)}
+}
+
+
+const admin = checkUser(id,password);
+admin.then(console.log);
 /*
 user.loginUser(id,password,
     (id) => {
