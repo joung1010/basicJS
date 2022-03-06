@@ -199,3 +199,65 @@ p {
 .about__title {
     margin-top: 0;
 }
+
+.skills {
+    text-align: center;
+    background-color: var(--color-yellow);
+    padding: 20px 0;
+}
+
+.skills h2 {
+    margin-bottom: 5px;
+}
+.skills h3 {
+    font-weight: var(--weight-regular);
+    margin: auto;
+}
+
+.my_skill {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-dark-grey);
+    margin: 15px 0;
+}
+.my_skill h2 {
+    font-size: var(--font-small);
+}
+.my_skill__left {
+    color: var(--color-white);
+    padding: 10px;
+    flex-basis: 60%;
+}
+
+
+.my_skill__left__title {
+    margin-top: 5px;
+
+}
+.skill_description {
+    display: flex;
+    justify-content: space-between;
+}
+.skill_level {
+    background-color: var(--color-dark-white);
+    width: 100%;
+    height: 5px;
+    margin-bottom: 10px;
+}
+.level-bar {
+    background-color: var(--color-orange);
+    height: 5px;
+}
+.my_skill__right {
+    flex-basis: 40%;
+}
+.tools {
+    color: var(--color-white);
+}
+
+.etcs {
+    color: var(--color-white);
+}
+.tool, .etc {
+    padding: 0;
+}
