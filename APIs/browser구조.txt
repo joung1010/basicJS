@@ -1,0 +1,31 @@
+
+Window : 브라우저에서 웹페이지를 열게 되면 Window라는 전체적인 오브젝트가 존재
+  |     (현재 페이지, 브라우저에서 열려있는 전체적인 창을 의미)
+  |
+  |
+  ------> Document: HTML로 작성한 부분이 표기되는 부분
+  |
+  |
+  |
+  ------> Navigator : 사용자 눈에 보이지 않지만 전체적으로 Window 에 관련된 브라우저 자체에 관련된
+                        정보들이 담겨있는 Navigator
+
+  =====> 즉 우리의 페이지를 브라우저에 열게 되면
+
+
+
+  Window
+    |
+    |
+    |
+    ------> DOM(Document Object Model) : 요소를 추가, 삭제, 이동, 스타일 조작등...
+    |
+    |
+    |
+    ------> BOM(Browser Object Model) : Navigator, location, fetch, storage...
+    |
+    |
+    |
+    ------> Javascript : Array, Map, Date ....
+                        -> Javascript로 브라우저 위에서 동작하는 걸 만들때
+                        Window, DOM, BOM 에 관련된 APIs를 사용 가능
