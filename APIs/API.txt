@@ -1,0 +1,62 @@
+APIs
+(Application programing Interface)
+
+ex) 자판기 에서 동전을 넣고 버튼을 누르면 내부적으로 어떤 복잡한 관정을 거치는지 몰라도 사용
+, 멀티앱에 연결만 하면 내부적으로 어떻게 전기를 공급 받는지 몰라도 사용가능
+
+Window application을 만들려면 window에서 제공하는 API를 사용
+모바일 application을 만들려먼 안드로이드나 맥OS에서 제공하는 API를 사용
+
+우리가 만든 UserStorage에서 login logout 기능을 제공
+-> 두기능을 제공하는 API라고 볼 수 있다.
+
+즉 사용자 입장에서 login 과 logout 이 내부적으로 어떻게 작동하는지 알지 못해도
+단순 함수 호출을 함으로써 사용할 수 있다.
+
+WEB APIs
+1. DOM APIs : 웹페이지의 요소들을 생성 삭제, 스타일 조작
+(Document object Model)
+
+2. Network APIs : 서버와 통신
+
+3. Graphics APIs : Canvas 나 WebGL등
+
+4. Audio/ Video APIs : 멀티 미디어 관련
+
+5. Device APIs : 사용자가 온라인, 오프라인 인지 기기의 상태값을 받아옴
+
+6. File APIs
+
+7. Storage APIs
+
+참고:
+MDN Web API:
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction
+
+HTTP (Hyper Text Transfer Protocal ): 웹클라이언트 와 서버가 어떻게 통신할지 약속한 통신 규약
+
+              request
+                --->
+ Client        Message(보안)          Server
+               Response
+                <----
+
+HTTPS (Hyper Text Transfer Protocal Secure): 정보 전달시 보안처리가 잘된 아이
+
+EX)
+Http
+
+Client          <------------->     Server
+password:mason   (보안 처리가 안되서 글자가 그대로 노출됨)
+
+
+Https
+                    encrypted
+Client          <------------->     Server
+password:mason    sdfk2341ks
+암호화 키를 이용해서 보안처리  (사용자가 전달한 정보가 그대로 노출되지 않음)
+
+==> 몇몇 APIs 는 Https 환경에서만 동작함
+
+
+
