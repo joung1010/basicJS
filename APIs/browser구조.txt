@@ -29,3 +29,20 @@ Window : 브라우저에서 웹페이지를 열게 되면 Window라는 전체적
     ------> Javascript : Array, Map, Date ....
                         -> Javascript로 브라우저 위에서 동작하는 걸 만들때
                         Window, DOM, BOM 에 관련된 APIs를 사용 가능
+
+      참고:
+      Document
+
+      https://developer.mozilla.org/en-US/docs/Web/API/Document
+
+      Window
+
+      https://developer.mozilla.org/en-US/docs/Web/API/Window
+
+      Viewport
+
+      https://developer.mozilla.org/en-US/docs/Glossary/layout_viewport
+
+      Navigator
+
+      https://developer.mozilla.org/en-US/docs/Web/API/Navigator
