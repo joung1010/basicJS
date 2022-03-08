@@ -26,3 +26,13 @@
 // client x y는 브라우저를 기준으로 해당 좌표값을 가져온다
 // page x y 는 페이지의 시작점에서부터 해당위치가 얼마나 떨어져있는지를 계산한다.
 
+const special = document.querySelector('.special');
+
+document.addEventListener('click',(event) =>{
+    special.innerHTML=`
+    clientXy :X ${event.clientX} ,Y ${event.clientY} <br>
+     pageXy : X  ${event.pageX} ,Y ${event.pageY}
+    `;
+   console.log(`clientXy : ${event.clientX} , ${event.clientY} 
+   pageXy :  ${event.pageX} , ${event.pageY}`);
+});
