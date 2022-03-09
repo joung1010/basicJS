@@ -26,13 +26,26 @@
 // client x y는 브라우저를 기준으로 해당 좌표값을 가져온다
 // page x y 는 페이지의 시작점에서부터 해당위치가 얼마나 떨어져있는지를 계산한다.
 
+// css: overflow : 문서의 내용이 window보다 벗어나게 되면 그에 관련된 조작을함
+// overflow: hidden; <- 스크롤이 안됨
+
 const special = document.querySelector('.special');
 
-document.addEventListener('click',(event) =>{
+//1. 내꺼
+/*
+special.addEventListener('click',(event) =>{
     special.innerHTML=`
     clientXy :X ${event.clientX} ,Y ${event.clientY} <br>
      pageXy : X  ${event.pageX} ,Y ${event.pageY}
     `;
-   console.log(`clientXy : ${event.clientX} , ${event.clientY} 
+   console.log(`clientXy : ${event.clientX} , ${event.clientY}
    pageXy :  ${event.pageX} , ${event.pageY}`);
+});
+*/
+
+special.addEventListener('click',(event)=>{
+    const rect = special.getBoundingClientRect();
+    console.log(rect);
+    console.log(`clientXy : ${event.clientX} , ${event.clientY}`);
+    console.log(`pageXy :  ${event.pageX} , ${event.pageY}`);
 });
