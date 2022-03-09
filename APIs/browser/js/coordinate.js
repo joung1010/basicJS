@@ -49,3 +49,28 @@ special.addEventListener('click',(event)=>{
     console.log(`clientXy : ${event.clientX} , ${event.clientY}`);
     console.log(`pageXy :  ${event.pageX} , ${event.pageY}`);
 });
+
+// ++ scroll
+// 1. 100px 씩 y축으로 이동
+const scrollBy = document.querySelector('#scrollBy');
+
+scrollBy.addEventListener('click',(event)=>{
+    const currentY = window.scrollY;
+    window.scrollTo(0, currentY + 100);
+});
+
+//2. 위에서 100px만 이동
+const scrollTo = document.querySelector('#scrollTo');
+
+scrollTo.addEventListener('click',(event)=>{
+    const currentY = event.clientY;
+   window.scrollTo(0,currentY+100);
+});
+
+//3. special 위치로 이동
+
+const scrollInto = document.querySelector('#scrollInto');
+const moveSpecial = document.querySelector('.special').getBoundingClientRect();
+scrollInto.addEventListener('click',()=>{
+    window.scrollTo(moveSpecial.x,moveSpecial.y);
+});
