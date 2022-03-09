@@ -53,24 +53,42 @@ special.addEventListener('click',(event)=>{
 // ++ scroll
 // 1. 100px 씩 y축으로 이동
 const scrollBy = document.querySelector('#scrollBy');
+//2. 위에서 100px만 이동
+const scrollTo = document.querySelector('#scrollTo');
+//3. special 위치로 이동
+const scrollInto = document.querySelector('#scrollInto');
 
-scrollBy.addEventListener('click',(event)=>{
+// my code
+/*scrollBy.addEventListener('click',(event)=>{
     const currentY = window.scrollY;
     window.scrollTo(0, currentY + 100);
 });
-
-//2. 위에서 100px만 이동
-const scrollTo = document.querySelector('#scrollTo');
-
 scrollTo.addEventListener('click',(event)=>{
     const currentY = event.clientY;
-   window.scrollTo(0,currentY+100);
+    window.scrollTo(0,currentY+100);
 });
-
-//3. special 위치로 이동
-
-const scrollInto = document.querySelector('#scrollInto');
 const moveSpecial = document.querySelector('.special').getBoundingClientRect();
 scrollInto.addEventListener('click',()=>{
     window.scrollTo(moveSpecial.x,moveSpecial.y);
+});*/
+// window.scroll() : 문서에서 특정 위치로 이동 scrollTo 보기에 동일함
+// window.scrollby() : 윈도우 창에 있는 문서의 위치에서 스크롤함
+// Element.scrollIntoView(): 요소가 위치한 곳으로 이동,단 요소가 보일 수 있게
+// 상위 컨테이너로 이동
+scrollBy.addEventListener('click',()=>{
+    // window.scrollBy(0, 100);
+    window.scrollBy({
+        top:100,
+        left:0,
+        behavior:"smooth"
+    });
 });
+scrollTo.addEventListener('click',()=>{
+    window.scrollTo(0, 100);
+});
+scrollInto.addEventListener('click',()=>{
+    special.scrollIntoView();
+});
+
+
+
