@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scroll</title>
     <style>
-      body {
+    /*
+    my coding
+    body {
         background-color: black;
       }
       button {
@@ -30,11 +32,44 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
+      }*/
+    body {
+        background-color: black;
+        text-align: center;/*이렇게 하면 버튼만 가운데로 온다 Why?? margin 값이 들어가 있기때문이다 */
+    }
+    img {
+        display: block;
+        margin: auto;
+    }
+
+    button {
+        outline: none;
+        background-color: tomato;
+        color: white;
+        font-size: 32px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
     </style>
   </head>
   <body>
 
+  <button>Find a rabbit</button>
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/rabbit.png" alt="rabbit" id="rabbit">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+  <img src="img/carrot.png" alt="carrot">
+
+
+<!--
+  my coding
 <div class="container">
   <button id="find_rabbit">Find a rabbit</button>
   <img src="img/carrot.png" alt="carrot"  class="carrot">
@@ -63,10 +98,22 @@
   <img src="img/carrot.png" alt="carrot"  class="carrot">
   <img src="img/carrot.png" alt="carrot"  class="carrot">
   <img src="img/carrot.png" alt="carrot"  class="carrot">
-</div>
+</div>-->
 
     <script>
-      const rabbit = document.querySelector('.rabbit');
+        const button = document.querySelector('button');
+        const rabbit = document.querySelector('#rabbit');
+
+        button.addEventListener('click',()=>{
+            rabbit.scrollIntoView({
+               behavior:"smooth",
+                block:"center"
+            });
+        });
+
+      /*
+      my coding
+     const rabbit = document.querySelector('.rabbit');
       const findRabbit = document.querySelector('#find_rabbit');
 
       findRabbit.addEventListener('click',()=>{
@@ -74,7 +121,7 @@
           behavior:"smooth",
           block:"center"
         });
-      });
+      });*/
 
     </script>
   </body>
