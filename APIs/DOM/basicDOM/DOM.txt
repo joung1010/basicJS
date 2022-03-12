@@ -1,0 +1,92 @@
+
+DOM : Document Object Model
+*   브라우저가 웹어플리케이션을 어떻게 분석해서 정확한 위치에 표시하는지,
+    우리가 어떻게 DOM 요소를 조작할 수 있는지?,
+    브라우저가 랜더링하는 순서와 어떻게 CSS를 써야하는지, 어떤 애니매이션이 성능에 좋은지 나쁜지 알아보자
+
+
+
+우리가 HTML을 이용해서 웹페이를 만들면 해당 HTML 파일을 브라우저에서 읽게 된다.
+-> 브라우저에서 <body>, <section>, <head> 이런 태그들을 분석해서 노드로 변환하게 된다
+
+HTML Tag      ------>       Javascript Node
+                            -> 즉 브라우저가 가지고있는 브라우저가 이해할 수 있는 자신들만의 오브젝트로 변환
+                               (HTML 파일에 쓰인 태그가 Javascript 에서는 Node 라는 오브젝트로 변환)
+
+=========> 이 Node라는 object는 안에 우리가 태그안에 작성했던 클래스, 아니면 텍스트같은 모든 정보를 포함한다.
+
+EventTarget
+    |
+    |
+    -----> Node : Node는 EventTarget 이라는 Object를 상속
+                  -> 이말은 즉 모든 Node는 이벤트가 발생할 수 있다.
+            |
+            |
+            -----> Document(이벤트 발생가능)
+            |
+            |
+            -----> Element(이벤트 발생가능) 이미지나 HTML요소가 변환된 형태
+            |           |
+            |           |
+            |           -----> HTMLElement
+            |                       |
+            |                       |
+            |                       -----> HTMLInputElement
+            |                       |                           HTML에서 어떤 태그를 쓰는지에 따라서
+            |                       |
+            |                       -----> HTMLDIvElement
+            |
+            -----> Text(이벤트 발생가능)
+
+
+--> 즉 브라우저가 우리의 HTML 파일을 읽어서 한줄 한줄씩 읽어서 DOM 트리로 변환, 즉 브라우저가 이해할 수 있도록
+`   자신들만의 오브젝트 나무로 만들어 나가는 것
+
+DOMTreeHtml 파일 DOM 트리로 변경
+    DOM Tree
+       html(HTMLHtmlElement)
+        |
+        |
+        ----->  head(HTMLHeadElement)
+        |         |
+        |         |
+        |         -----> meta (HTMLMetaElement)
+        |         |
+        |         |
+        |         -----> meta (HTMLMetaElement)
+        |         |
+        |         |
+        |         -----> title (HTMLTitleElement)
+        |         |        |
+        |         |        |
+        |         |        -----> TextNode : Document
+        |         |
+        |         -----> link (HTMLLinkElement)
+        |
+        ----->  body(HTMLBodyElement)
+                  |
+                  |
+                  -----> span  (HTMLSpanElement)
+                  |        |
+                  |        |
+                  |         -----> TextNode : hello
+                  |
+                  -----> section (HTMLSectionElement)
+                            |
+                            |
+                            -----> Img (HTMLImageElement)
+                            |
+                            |
+                            -----> h1 (HTMLHeadingElement)
+                            |       |
+                            |       |
+                            |       -----> TextNode : Study DOM
+                            |
+                            -----> h3 (HTMLHeadingElement)
+                                    |
+                                    |
+                                    -----> TextNode : Don't forget DOM Tree
+
+
+
+
