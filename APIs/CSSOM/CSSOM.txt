@@ -1,0 +1,178 @@
+ CSSOM : CSS Object Model
+ * css스타일은 브라우저가 어떻게 이해하는지 알아보자
+
+
+ HTML               CSS         Compute Styles based on css cascading rule
+
+ DTOM       +       CSS     =   CSSOM
+                    external
+                    embedded
+                    inline
+
+브라우저 에서 HTML 읽어서 DOM을 만들게 되면 우리가 정의한 CSS를 병합해서 "CSSOM"을 만든다
+    -> 우리가 HTML 파일 안에 들어있는 스타일 즉 inline css, embedded css, 파일에 정의된 css, 또는
+        따로 정의되어 있지 않으면 브라우저에서 기본적으로 가지고 있는 스타일 이런 모든 스타일 정보를 합해서
+        최종적으로 DOM 과 CSS의 요소를 병합해서 CSSOM이라는 트리를 다시 만든다.
+
+    -> CSSOM 에서는 우리가 정의한 스타일, 브라우저에서 정의한 모든 속성값
+    즉 cascading 룰에 따러서 합해진 모든 CSS 값들이 정의(이것을 computed styules라고 한다)
+
+
+    ex) CSSOM
+
+            html                만약 font size 14px를 주면 cascading 룰에 의해 모든 자식 요소에 font-size가 적용
+            padding : 0px;      + font-size  :  14px;
+            margin  : 0px;
+            |
+            |
+            ---->  body
+                    background-color  :  black;     + font-size  :  14px;
+                    text-align  : center;
+                    |
+                    |
+                    ----> section
+                    |        color  : white;        + font-size  :  14px;
+                    |
+                    |
+                    |
+                    |
+                    ----> section
+                            width  : 50%;
+                            margin : 50px auto;     + font-size  :  14px;
+                            |
+                            |
+                            ----> h1
+                            |       color  : white      + font-size  :  14px;
+                            |
+                            |
+                            ----> h3
+                                    color  : white       + font-size  :  14px;
+
+
+
+--> CSSOM 에는 모든 계산된 이런 스타일 관련된 속성들이 다 포함
+    그래서 브라우저에서 html 파일을 읽게 되면 제일처음 DOM 트리를 만들고
+    그 다음에 CSS 파일을 읽은 다음에 전부 계산해서 최종적으로 확정된 CSSOM CSS 스타일 트리르 만들게 된다
+
+    -> DOM 과 CSSOM 을 합쳐서 최종적으로 브라우저에 표기될 아이들만 Render 트리에 선별되어 표기된다.
+        이 최종 Render 트리에는 body부분만 들어있다
+        why???
+            <head> 에 있는 내용은 사용자에게 보여지기 않기때문이다.
+            만약 특정 태그에 display none으로 되어있으면 사용자에게 보여지지 않는다 즉 최종 render 트리에는 해당 태그가 포함되지 않는다.
+
+    --> render 트리에는 궁극적으로 사용자에게 보여지는 부분이 선별되어 DOM 과 CSSOM의 스타일이 합해져서 최종적으로 render 트리가 만들어진다.
+
+
+        DOM Tree
+           html(HTMLHtmlElement)
+            |
+            |
+            ----->  head(HTMLHeadElement)
+            |         |
+            |         |
+            |         -----> meta (HTMLMetaElement)
+            |         |
+            |         |
+            |         -----> meta (HTMLMetaElement)
+            |         |
+            |         |
+            |         -----> title (HTMLTitleElement)
+            |         |        |
+            |         |        |
+            |         |        -----> TextNode : Document
+            |         |
+            |         -----> link (HTMLLinkElement)
+            |
+            ----->  body(HTMLBodyElement)
+                      |
+                      |
+                      -----> span  (HTMLSpanElement)
+                      |        |
+                      |        |
+                      |         -----> TextNode : hello
+                      |
+                      -----> section (HTMLSectionElement)
+                                |
+                                |
+                                -----> Img (HTMLImageElement)
+                                |
+                                |
+                                -----> h1 (HTMLHeadingElement)
+                                |       |
+                                |       |
+                                |       -----> TextNode : Study DOM
+                                |
+                                -----> h3 (HTMLHeadingElement)
+                                        |
+                                        |
+                                        -----> TextNode : Don't forget DOM Tree
+
+
+                                        +
+
+       ex) CSSOM
+
+               html                만약 font size 14px를 주면 cascading 룰에 의해 모든 자식 요소에 font-size가 적용
+               padding : 0px;      + font-size  :  14px;
+               margin  : 0px;
+               |
+               |
+               ---->  body
+                       background-color  :  black;     + font-size  :  14px;
+                       text-align  : center;
+                       |
+                       |
+                       ----> section
+                       |        color  : white;        + font-size  :  14px;
+                       |
+                       |
+                       |
+                       |
+                       ----> section
+                               width  : 50%;
+                               margin : 50px auto;     + font-size  :  14px;
+                               |
+                               |
+                               ----> h1
+                               |       color  : white      + font-size  :  14px;
+                               |
+                               |
+                               ----> h3
+                                       color  : white       + font-size  :  14px;
+
+
+                                       ==
+
+    Render Tree
+    +) Opacity : 0 , visibility: hidden  --> 눈에 보이지는 않지만 실제로 존재하기때문에 render 트리에 포함된다.
+
+            html
+            padding : 0px;
+            margin  : 0px;
+            |
+            |
+            ---->  body
+                    background-color  :  black;
+                    text-align  : center;
+                    |
+                    |
+                    ----> section
+                    |        color  : white;
+                    |
+                    |
+                    |
+                    |
+                    ----> section
+                            width  : 50%;
+                            margin : 50px auto;
+                            |
+                            |
+                            ----> h1
+                            |       color  : white
+                            |         |
+                            |         ----> textNode :    Study DOM
+                            |
+                            ----> h3
+                                    color  : white
+                                  |
+                                  ---->  textNode : Don't forget DOM Tree
