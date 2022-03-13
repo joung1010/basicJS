@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      body {
+        background-color: black;
+        text-align: center;
+      }
+      section {
+        width: 50%;
+        margin: 50px auto;
+        background-color: brown;
+        border-radius: 20px;
+        padding: 20px;
+      }
+      img {
+        z-index: 100;
+        will-change: opacity;
+      }
+      h1,
+      h3,
+      span {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+  <!--
+    개발자 도구에서 $0을 사용하면 해당 선택한 요소를 콘솔창에서 참조할 수 있다.
+    section을 선택하고 $0.childNode를 하게되면
+                                                0: text
+                                                1: img
+                                                2: text
+                                                3: h1#brand
+                                                4: text
+                                                5: h3
+                                                6: text
+                                                -> 우리가 코드에서 추가한 enter키나 코드에서 추가한 코멘트(주석)도 포함됨
+   $0.nextSibling: 다음 형제 노드정보
+   $0.parentNode: 선택한 요소의 부모노드
+   $0.nodeName, nodeType, nodeValue 등 노드에 관련된것을 가져올 수 있고 대부분은 Element의 API를 활용한다
+  -->
+    <section>
+      <img src="img/avatar.png" alt="avatar" />
+      <h1 id="brand">Dream Coding</h1>
+      <h3>Don't forget to code your dream</h3>
+    </section>
+    <span>Hello World!</span>
+  </body>
+</html>
