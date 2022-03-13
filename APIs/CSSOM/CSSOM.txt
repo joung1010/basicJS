@@ -176,3 +176,8 @@
                                     color  : white
                                   |
                                   ---->  textNode : Don't forget DOM Tree
+
+
+참고 사이트 :
+            CSSOM
+            https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model
