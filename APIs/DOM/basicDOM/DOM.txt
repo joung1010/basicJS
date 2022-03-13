@@ -92,3 +92,32 @@ DOMTreeHtml 파일 DOM 트리로 변경
             https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction
             DOM API
             https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API
+
+추가 +)
+최상위에  있는 EventTarget은 3개의 매소드가 있다
+1. EventTarget.addEventListener()
+                -> 우리가 쓰던 이 함수는 EventTarget이 지원해주는 것이였다
+2.EventTarget.removeListener()
+                -> 특정 eventListener 제거
+3.EventTarget.dispatchEvent()
+                -> 특정 이벤트를 발행
+
+그래서 Node 는 많은 정보를 가지고 있다
+
+Node.parentNode : 부모 요소가 무엇인지
+
+Node.appendChild() : 자식노드 추가
+Node.cloneNode() : 노드 복사
+
+Node.childNode : 모든 자식 노드
+Node.firstChild, Node.lastChild
+Node.isConnected
+       .
+       .
+       .
+참고 사이트 :
+                Node
+                https://developer.mozilla.org/en-US/docs/Web/API/Node
+                Event Target
+                https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
+
