@@ -1,0 +1,70 @@
+Critical rendering Path
+
+browser에 url를 입력하면
+request/response -> loading -> scripting -> rendering -> layout -> painting
+순으로 진행된다.
+
+1. request/response
+    브라우저가 서버에게 HTML 파일을 요청
+
+2. loading
+    서버에서 받은 HTML 파일을 로딩
+
+3. scripting
+    데이터를 받아서 이 HTML 파일을 한줄씩 읽어서 DOM 요소로 변환
+    CSS 요소를 CSSOM 으로 변환
+
+4. rendering
+    브라우저 window에 표기를 하기위해 준비(rendering tree를 만듬)
+
+5. layout
+    rendering tree를 (DOM, CSSOM, 최종적으로 계산된 CSS스타일 포함) 만든다음 각각의 요소가
+    어떻게 표기될것인지 계산
+    -> x와 y 그리고 너비와 높이 이런 크기들을 계산
+
+6. painting
+    layout에서 계산된 것들이 바로 브라우저에 그림을 그리는 것이 아니라
+    우리가 각요소들을 어떻게 배치 했는지에 따라서 각 부분들을 조금씩 잘게 나누어서 이미지를 준비한다
+    -> 이 잘게 나누어진 이미지를 비트맵이라고 한다(컴퓨터가 이해할 수 있는 이미지로 변환)
+       다양한 속성값에 따라서 같이 묶어서 레이러를 만들어둔다
+       painting 단계에서는 레이어별로 준비만 해둔다
+
+WHY???  왜 레이어별로 준비를 할까???
+        -> 브라우저가 조금 성능개선을 위해서 스스로 준비를 해둔다
+        만약 특정부분에 CSS를 변경했을때 레이거 기능을 이용하지 않고 전체적으로 그림을 그리게되면 브라우저는
+        이 전체 웹페이지를 전체적으로 다시 그린다
+        즉 레이어를 준비하면 그 해당 레이어만 수정하면된다.
+        --> 그래서 CSS에 will-change 속성값이 있는데 이는 브라우저에게 이 CSS 속성이 변경될 수 있다는 것을 알려주고
+        브라우저는 새로운 레이어에 등록하고 그해당 속성이 변경되면 그 레이어만 변경되게 준비해둔다
+        But 너무 많이 남용해서 사용하지 말자, 브라우저가 레이어를 너무 많이 만들기때문에 성능 저하가 발생한다.
+
+7. composition
+    이렇게 준비된 레이어를 순서대로 차곡차곡 브라우저 위에다가 표기한다.
+
+
+위 단계를 2가지로 나타낼수 있다
+
+1. construction ( DOM CSSOM Render Tree)
+    HTML 페이지에서 브라우저가 이해할 수 있도록 브라우저만의 언어로 바꾸는 과정
+
+2. Operation
+    Rendering Tree를 이용해서 구조를 작성하고 어디에 배치할지 계산 후 실제 브라우저 window에 그려주는 과정
+
+
+
+*Point 잡기
+
+1. construction 파트에서 Rendering tree를 만들때까지 어떻게 하면 빠르게 만들 수 있을까
+    DOM 요소가 작으면, CSS 규칙이 작으면 작을 수록 빠르다
+    -> Tree가 작아지기 때문에
+        즉 불필요한 태그를 쓴다든지, 불필요한 Div태그 남용 등등.....
+
+2. Operation 에는 사용자에게 표기하는 것도 중요하지만 나중에
+    사용자가 클릭해서 요소를 움직이거나 애니메이션을 쓸때 layout, paint가 자주 일어나지 않도록 만드는 것이 중요하다
+
+    ex) 특정 태그를 transform을 이용해서 움직이면 painting이 발생하지 않는다
+        why?? 단순히 레이어의 위치만 변동되기때문에 composition만 발생한다
+        --> composition만 발생하면 Good
+            paint가 발생하면 SoSo
+            layout이 발생하면 Bad( Render Tree를 통해 다시 처음부터 해당요소의 위치를 계산하고 다시 비트맵으로 변환후 레이어를생성후 다시 배치한다)
+
