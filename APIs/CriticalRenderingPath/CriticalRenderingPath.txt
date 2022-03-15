@@ -73,3 +73,10 @@ WHY???  왜 레이어별로 준비를 할까???
                                     -> 실제 해당 HTML파일에 얼마만큼 레이어를 만들었는지 확인 가능
 
 실제 레이어에 영향을 주는 CSS 속성값관련 사이트: http://csstriggers.com/
+Blink : 크롬
+Gecko : 파이어폭스                       ==> Javascript 엔진
+Webkit : 사파리
+EdgeHTML : 오래된 Edge 브라우저
+
+Change from default : 기본값에서 편화가 있을때(처음에 발생할떄)
+Subsequent update : 주기적으로 update 될때
