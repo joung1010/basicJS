@@ -74,7 +74,15 @@
     //section.appendChild(h2);  // -> sectin의 가장 마지막 자식요소로 추가됨
     const h3 = document.querySelector('h3');
     section.insertBefore(h2,h3);  // parentNode.insertBefore(newNode, referenceNode) API는 referenceNode 이전에 우리가 추가할 요소를 추가해준다
-  </script>
+
+    //section.innerHTML(); 을 하면 해당 section안에 있는 모든 태그들이 문자열로 반환된다 즉 내부 내용을 통으로 교체할때 사용(동적으로 추가후 변경이 없을때 사용)
+  /*  section.innerHTML = `
+  <img src="img/avatar.png" alt="avatar" />
+   <h1 id="brand">Dream Coding</h1>
+    `;*/
+
+    section.removeChild(h2); // 해당 Element 삭제제
+  /script>
 
   </body>
 </html>
