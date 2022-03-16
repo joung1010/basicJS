@@ -50,9 +50,31 @@
   -->
     <section>
       <img src="img/avatar.png" alt="avatar" />
+      <img src="img/people.png" alt="avatar" />
       <h1 id="brand">Dream Coding</h1>
       <h3>Don't forget to code your dream</h3>
     </section>
     <span>Hello World!</span>
+  <script>
+    //dom 요소 조작 querySelector() -> ()안에 css 문법을 이용해서 원하는 Element 를 가져올 수 있다
+    //                                태그 그자체로 값을 가져올때는 가장 첫번째 요소가 반환 된다.
+    //const image = document.querySelector('img');
+    //const image = document.querySelector('img[src="img/avatar.png"]');
+
+    //querySelectorAll 조건에 해당되는 모든 값을 가져온다다
+    //const images = document.querySelectorAll('img');
+    //console.log(images);
+
+    //새로운 요소 추가하기
+    const section = document.querySelector('section');
+    const h2 = document.createElement('h2');  // 태그 생성 <h2></h2>
+    h2.setAttribute('class','title');   // 해당 태그의 속성 값을 key와 value로 전달해주면 된다 -> <h2 class ='title'>
+    h2.textContent='This si a title';   //<h2 class ='title'>This is a title</h2>
+
+    //section.appendChild(h2);  // -> sectin의 가장 마지막 자식요소로 추가됨
+    const h3 = document.querySelector('h3');
+    section.insertBefore(h2,h3);  // parentNode.insertBefore(newNode, referenceNode) API는 referenceNode 이전에 우리가 추가할 요소를 추가해준다
+  </script>
+
   </body>
 </html>
