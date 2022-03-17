@@ -58,3 +58,16 @@ body {
     margin-top: 2px;
     cursor: pointer;
 }
+.list__text {
+    margin-left: 10px;
+    text-align: left;
+    position: relative;
+    height: 30px;
+    font-size: 18px;
+}
+.list__text i {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
