@@ -7,7 +7,7 @@ const addBtn = document.querySelector('#add_btn');
 function addList() {
     const enterValue = input.value;
     if (!enterValue) {
-        alert('쇼핑 리스트를 입력해주세요.');
+        input.focus();
         return;
     }
     const div = document.createElement("div");
@@ -16,7 +16,9 @@ function addList() {
         <i class="fa fa-trash" aria-hidden="true" id="del_btn" ></i>
         `;
     list.appendChild(div);
+    div.scrollIntoView({block: "center"});
     input.value='';
+    input.focus();
 }
 
 
