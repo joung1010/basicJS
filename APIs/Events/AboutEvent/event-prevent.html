@@ -30,13 +30,50 @@
       document.addEventListener('wheel', event => {
         console.log('scrolling');
         event.preventDefault();
+        // 에러 발생  Unable to preventDefault inside passive event listener due to target being treated as passive
+        // -->
+      });
+      const checkbox = document.querySelector('input');
+      checkbox.addEventListener('click', event => {
+        // 매우 긴 로직 수행행        console.log('checked');
+        event.preventDefault();
+        // 기본적으로 발생하는 동작을 취소 -> 콘솔로그에 checked 는 동작하지만 브라우저에서 체크박스가 체크되지 않는다.
+      });
+      // 여기 체크박스에는 브라우저가 행동하기 이전에 등록된 이벤트 리스너에게 너가 처리하고싶은 거 다처리해
+      // 나는 네가 처리 할 떄까지 기다렸다가 다 끝나면 그다음에 체크박스에 체크할께
+      // 그래서 이벤트 리스너에 굉장히 긴 작업이 있다면 그 작업이 끝난 다음에 체크박스에 체크하게된다.
+      // 근데 이때  event.preventDefault(); 만나면 브라우저는 어!? 취소했네 하고 체크박스를 체크하지 않는다.
+
+      // 하지만 wheel 같은 경우에는 빠르게 사용자가 스크롤링해야 되는 경우에는 브라우저가 내가 해야될일을 다처리한후에 스크롤링하게
+      //되면 굉장히 스크롤링이 느려질거다.
+      // 그래서 스크롤링에 관련된 것들 빠르게 뭔가가 동작 해야 되는것들은 브라우저가 너가 뭔일을 하든 말든 일단 내일부터 할께
+      // 즉 니가 preventDefault()를하면 브라우저는 그냥 무시한다.
+      // -> 우리가 스크롤링 되는 이벤트를 들을 수만 있지 브라우저의 기본값을 취소할 수 없다.
+
+      // 그럼 취소는 못랄까??? NO!!
+      // 우리가 이벤트를 등록할때 옵션을 전달할 수 가있다.
+      // 참고: https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
+      // 여기에 passive 옵션이 있다. 기본값이 true이며 true이면 브라우저한테 절대 절대 preventDefault()를 호출하지 않을꺼라고 말해준다
+      // 그래서 옵션에 passive를 false로 주변 preventDefault()를 호출할 수 있다.
+      /*
+      * document.addEventListener('wheel', event => {
+        console.log('scrolling');
+        event.preventDefault();
+      },{passive:false});
+      *
+      * */
+      //하지만 기본값이 passive로 설정된 event들은 기본적으로 그 값을 변경하지 않는것이 좋다.
+
+    /*  document.addEventListener('wheel', event => {
+        console.log('scrolling');
+        event.preventDefault();
       });
       const checkbox = document.querySelector('input');
       checkbox.addEventListener('click', event => {
         // long
         console.log('checked');
         event.preventDefault();
-      });
+      });*/
     </script>
   </body>
 </html>
