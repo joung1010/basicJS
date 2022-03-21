@@ -38,24 +38,67 @@
       const middle = document.querySelector('.middle');
       const button = document.querySelector('button');
 
-      outer.addEventListener('click', event => {
-        if (event.target !== event.currentTarget) {
-          return;
-        }
+/*      outer.addEventListener('click',event => {
         console.log(`outer: ${event.currentTarget}, ${event.target}`);
       });
-      middle.addEventListener('click', event => {
-        if (event.target !== event.currentTarget) {
-          return;
-        }
-        console.log(`middle ${event.currentTarget}, ${event.target}`);
+
+      middle.addEventListener('click',event => {
+        console.log(`middle: ${event.currentTarget}, ${event.target}`);
       });
-      button.addEventListener('click', event => {
-        console.log(`button1 ${event.currentTarget}, ${event.target}`);
-      });
-      button.addEventListener('click', event => {
-        console.log(`button2 ${event.currentTarget}, ${event.target}`);
-      });
+
+      button.addEventListener('click',event => {
+        console.log(`button1: ${event.currentTarget}, ${event.target}`);
+        //event.stopPropagation(); // 위로 전달하는 것을 그만해 즉 버튼에서만 핸들링되고 버블링은 일어나지 않는다.
+       // event.stopImmediatePropagation(); // 즉 나만 핸들링하고 다른건 무시해!
+      });*/
+
+      // 각 영역별로 click event를 등록후 button을 클릭하면 outer, middle, button의 event가 모두 발생한다
+      //-> why???? 이덧은 브라우저에서 이벤트를 처리하는 캡처링과 버블링 떄문에 발생한다.
+      // 우리가 버튼을 클릭하게 되면 부모 컨테이너에서 연분홍색까지 또 연분홍색에서 버튼까지 캡처링을 통해서 내려오게 된다.
+      // 그리고 버튼에 등록된 이벤트 핸들러를 호출하게 된다. --> 야 버튼 눌렸어
+      // 그 후에 끝나는 것이 아니라 버블링을 통해서 상위 부모에게 "이벤트 발생"을 알려준다.
+      //      --> 즉 부모에게 등록된 이벤트 핸들러를 호출한다.
+      // 대부분의 경우 캡처링 단계에서 어떤 작업을 처리하지는 않는다.
+      // 따라서 버블링에 대해서 관심을 가져보자
+
+      // 버튼 2 추가
+/*      button.addEventListener('click',event => {
+        console.log(`button2: ${event.currentTarget}, ${event.target}`);
+        event.stopImmediatePropagation(); // 즉 나만 핸들링하고 다른건 무시해!
+      });*/
+      // 여기서 버튼들을 보면 currentTarget과 target이 동일한 것을 볼 수 있다.
+      // -> 이말은 현재 타켓은 버튼이고 이벤트 발생도 버튼에서 일어 났다는 말이다.
+      // 근데 버블링되서 발생된 middle과 outer를 보면
+      // currentTarget 은 각각 본인들의 div Element를 가리키는데 target은 button Element을 가리킨다 이는 본인에게서 발생된 이벤트가 아니라는 힌트를 준다.
+      // 흔히  event.stopPropagation(); 추가한다(위로 전달하는 것을 그만해 즉 버튼에서만 핸들링되고 버블링은 일어나지 않는다.)
+      // 또는  event.stopImmediatePropagation(); 추가 ( 즉 나만 핸들링하고 다른건 무시해! 다른건 다 취소해)
+      // 하지만 버튼2에 event.stopImmediatePropagation(); 등록해도 버튼1도 같이 동작하게 된다
+      // 그 이유는 button1이 먼저 등록이 되었고 그다음에 button2 가 등록이 되었다.
+      // 즉 캡처링을통해 otuer에서 middle로 button1 에서 button2로 다시 middle ouetr 순으로 전달 되게 된다.
+
+      // 그래서 항상 버튼1 번이 먼저오기 때문에 2번에서 그만해 라고 하면 2번 이후부터 적용되지 이전에 발생한건 여전히 발생한다.
+      // event.stopPropagation();,  event.stopImmediatePropagation(); 는 사용하지말자 왜냐하면 본인만의 이벤트만 처리하고 나머지 이벤트는 무시해 버리기 때문이다.
+
+    // 해경방안
+
+       outer.addEventListener('click', event => {
+         if (event.target !== event.currentTarget) {
+           return;
+         }
+         console.log(`outer: ${event.currentTarget}, ${event.target}`);
+       });
+       middle.addEventListener('click', event => {
+         if (event.target !== event.currentTarget) {
+           return;
+         }
+         console.log(`middle ${event.currentTarget}, ${event.target}`);
+       });
+       button.addEventListener('click', event => {
+         console.log(`button1 ${event.currentTarget}, ${event.target}`);
+       });
+       button.addEventListener('click', event => {
+         console.log(`button2 ${event.currentTarget}, ${event.target}`);
+       });
     </script>
   </body>
 </html>
