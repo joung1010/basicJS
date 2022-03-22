@@ -14,41 +14,35 @@ function onAdd() {
     const item = createItem(text);
     items.appendChild(item);
     item.scrollIntoView({
-        block:'center',
-        behavior:'smooth'
+        block: 'center',
+        behavior: 'smooth'
     });
     input.value = '';
     input.focus();
 }
-
+let id =0 // UUID
 function createItem(text) {
     const itemRow = document.createElement('li');
     itemRow.setAttribute('class', 'item__row');
-
-    const item = document.createElement('div');
-    item.setAttribute('class','item');
-
-    const span = document.createElement('span');
-    span.setAttribute('class','item__name');
-    span.innerText = text;
-
-    const delBtn = document.createElement('button');
-    delBtn.setAttribute('class','item__delete');
-    delBtn.innerHTML=`<i class="fa fa-trash-o" aria-hidden="true"></i>`;
-
-    const itemDivider = document.createElement('div');
-    itemDivider.setAttribute('class', 'item__divider');
-
-    item.appendChild(span);
-    item.appendChild(delBtn);
-
-    itemRow.appendChild(item);
-    itemRow.appendChild(itemDivider);
+    itemRow.setAttribute("data-id",id);
+    itemRow.innerHTML = `
+            <div class="item">
+                <span class="item__name">${text}</span>
+                <button class="item__delete">
+                    <i class="fa fa-trash-o" aria-hidden="true" data-id=${id}></i>
+                </button>
+            </div>
+            <div class="item__divider"></div>
+    `;
+    id++;
     return itemRow;
 }
-items.addEventListener('click',event=>{
-    if (event.target.parentNode.tagName === 'BUTTON') {
-        items.removeChild(event.target.parentNode.parentNode.parentNode);
+
+items.addEventListener('click', event => {
+    const dataId = event.target.dataset.id;
+    if (dataId) {
+       const toBeDel = document.querySelector(`.item__row[data-id="${dataId}"]`);
+        toBeDel.remove();
     }
 });
 
@@ -56,7 +50,7 @@ addBtn.addEventListener('click', () => {
     onAdd();
 });
 
-input.addEventListener('keypress',(event)=>{
+input.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         onAdd();
     }
