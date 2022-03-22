@@ -24,17 +24,24 @@
       <li>10</li>
     </ul>
     <script>
+      // event delegation
+      // 부모 컨테이너에는 어떤 자식요소에서 이벤트가 발생하든 모든 이벤트를 다들을 수 있다.
+
+
       // Bad
-      // const lis = document.querySelectorAll('li');
-      // lis.forEach(li => {
-      //   li.addEventListener('click', () => {
-      //     li.classList.add('selected');
-      //   });
-      // });
+/*      const lis = document.querySelectorAll('li');
+      lis.forEach(li => {
+        li.addEventListener('click', () => {
+          li.classList.add('selected');
+        });
+      });*/
 
       // Coooooooool 🙌
+      //참조 : https://developer.mozilla.org/ko/docs/Web/API/Element/tagName
       const ul = document.querySelector('ul');
       ul.addEventListener('click', event => {
+        //console.log(event.target);
+        //console.log(event.target.tagName); //LI
         if (event.target.tagName == 'LI') {
           event.target.classList.add('selected');
         }
