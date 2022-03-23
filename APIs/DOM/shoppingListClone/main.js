@@ -53,8 +53,8 @@ addBtn.addEventListener('click', () => {
     onAdd();
 });
 
-input.addEventListener('keypress',(event)=>{
-    if (event.key === 'Enter') {
+input.addEventListener('keydown',(event)=>{
+    if (event.keyCode === 13) {
         onAdd();
     }
 });

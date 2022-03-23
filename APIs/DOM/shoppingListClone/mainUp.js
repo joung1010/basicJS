@@ -49,9 +49,20 @@ items.addEventListener('click', event => {
 addBtn.addEventListener('click', () => {
     onAdd();
 });
-
-input.addEventListener('keypress', (event) => {
+// keypress Deprecated됨
+input.addEventListener('keydown', (event) => {
+    if (event.isComposing) {
+        return;
+    }
+    // 글자가 만들어지는 과정이라면 무시
     if (event.key === 'Enter') {
         onAdd();
     }
 });
+/*
+*   keyDown 과 keyUp의 차이점
+*   keyDown 은 사용자가 키보드를 눌렀을때 바로 발생하는 이벤트
+*       -> 눌렀을때 바로 처리하고 싶을때
+*   keyUp 은 키보드를 눌렀다가 땠을때 발생
+*       -> 키보드가 눌린후에 어떤 작업을 처리하고 싶을때 사용
+* */
