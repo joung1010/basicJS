@@ -85,3 +85,17 @@ function print(a,b){
 print(2,3);
 
 // 그래서 우리가 인자를 지정할때 변수에 함수명과 동이랗게 그 인자가 어떤 데이터를 받는지 좀더 유의미한 이름을 지정하는게 좋다.
+
+function divide(num1, num2) {
+    return num1/num2;
+}
+
+function surprise(operator){
+    const result = operator(2,3); // add(2,3)
+    console.log(result);
+}
+
+surprise(add);
+surprise(divide);
+// 이렇게 함수에 이름을 전달한다는 것은 함수의 이름을 여기저기 전달한다는 것은
+// 이 이름이 가리키고있는 함수의 reference를 전달하는 것과 동일하다.
