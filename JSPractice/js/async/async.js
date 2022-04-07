@@ -41,12 +41,12 @@ user2.then(console.log);
 
 
 //1.3 async 키워드 사용
-async function fetchUse3r() {
+async function fetchUser3() {
     // 10초동안 네트워크에서 값을 받아옴
     return 'mason';
 }
 // 함수 앞에 async 라는 키워드를 붙이면 해당 함수 블럭에 있는 코드를 자동적으로 promise로 변환 해준다!!!!
-const user3 = fetchUser2();
+const user3 = fetchUser3();
 user3.then(console.log);
 
 // await( async 가 붙은 함수안에서만 사용가능 ) -> await가 붙은 작업을 끝날때까지 기다려줘!
