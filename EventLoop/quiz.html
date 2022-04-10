@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+  <button>Let's dance</button>
+<div class="box"></div>
+  <script>
+      const button = document.querySelector('button');
+      const box = document.querySelector('.box');
+      button.addEventListener('click',()=>{
+          box.style.transition = 'transform 1s ease-in';
+          box.style.transform = 'translateX(800px)';
+          box.style.transform = 'translateX(500px)';  /*화면에 최종적으로 보여지는 코드*/
+          box.style.backgroundColor = 'blue';
+          box.style.backgroundColor = 'orange';
+          box.style.backgroundColor = 'yellow'; /*화면에 최종적으로 보여지는 코드*/
+          // 원래 목표: transform이 800px 이동 했다가 500px 다시 이동하고 싶다.
+          // 문제점: 하지만 500px 만  이동한다
+          // 이유 : callstack으로 들어간 callback 함수가 끝날떄까지 화면에 업데이트가 발생하지 않는다. 따라서 최종 이동된 500px 만크만 이동하게 된다.
+          // 즉 얼마나 많이 transform 으로 변경해도 이 브라우저에서 업데이트 되는 상황이 보여지지 않는다.
+          // 왜냐하면 현재 이벤트 루프가 callstack에 있기때문에 즉 Render 링 부분으로 이벤트 루프가 이동할 수 가 없기때문이다,
+          // 따라서 값이 다 적용 될때까지 기다렸다가 , 해당 콜백이 전부 끝나고 나서야 랜더링 으로와서 업데이트 한다.
+
+          // 아무리 DOM 요소를 조작해서 업데이트한다고 해도 브라우저에서는 변경된 사항이 바로바로 보여지지가 않는다.
+         // 콜백이 끝난 다음에애 그때서야 브라우저에 업데이트된 사항이 나타난다.
+
+
+      });
+  </script>
+</body>
+</html>
