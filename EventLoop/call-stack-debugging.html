@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>Click to start</button>
+<script>
+    function add(a, b) {
+        const sum = a + b;
+        return sum;
+    }
+
+    function calculate(a, b) {
+        console.log('calculate');
+        const result = add(a, b);
+        return result;
+    }
+
+    function main() {
+        const result = calculate(3, 4);
+        const element = document.createElement('span');
+        element.innerText = result;
+        document.body.appendChild(element);
+        console.log(result);
+        result;
+    }
+
+    const button = document.querySelector('button');
+    button.addEventListener('click',main);
+
+
+</script>
+</body>
+</html>
