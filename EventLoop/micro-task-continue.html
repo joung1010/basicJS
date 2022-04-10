@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            font-size: 60px;
+        }
+        button:hover {
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<button>Continue with Promise</button>
+<script>
+    function handleClick() {
+        console.log('handleClick');
+        Promise.resolve(0)
+            .then(()=>{
+               console.log('then');
+               handleClick();
+            });
+    }
+/*
+*   Task Queue 와 Microtask Queue 는 조금 다르다 .
+*  Microtask Queue 는 해당 큐 안에 모든 작업이 없어질 때까지  그리고 거기에  머물러 있는동안 새롭게 들어오는 작업도 계속적으로 처리한다.
+*
+* */
+    const button = document.querySelector('button');
+    button.addEventListener('click',handleClick);
+
+    /*
+    *       처음 while(true) 예제와 비슷하게 브라우저 화면이 업데이트 되지 않는다.
+    *       1. 처음 버튼을 클릭하면 이 버튼 이벤트 리스너에 등록된 콜백을 wehbApis 가
+    *       Task Queue로 보낸다.
+    *       2. Task Queue 에 들어온 작업이 이벤트 루프에 의해서  Call Stack 으로 이동
+    *       3. Call Stack 에서 작업을 수행( Promise를 생성) 이떄 then callback은 Microtask Queue 에 등록
+    *
+    *       4. 이벤트 루프가 순회하다가 Microtask Queue 에 작업이  있으면 해당 큐에 머물러서 작업을 수행한다.
+    *           이 작업을 Call Stack 으로 가지고 와서 수행을 하다가  이때 다시 then callback 이 Microtask Queue 에 등록되고
+    *           다시 이벤트 루프가 그 작업을 수행한다.
+    * */
+</script>
+<body>
+
+</body>
+</html>
