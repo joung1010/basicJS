@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queue Task</title>
+    <style>
+        button {
+            font-size: 60px;
+        }
+        button:hover {
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button>Continue with setTimeout</button>
+<script>
+    function handleClick() {
+        console.log('handleClick');
+        setTimeout(()=>{
+            console.log('setTimeout');
+            handleClick();
+        },0);
+    }
+// 이함수는 재귀함수로 계속 계속해서 Task Queue 에 우리가 등록한 콜백함수가 등록된다.
+    const button = document.querySelector('button');
+    button.addEventListener('click',handleClick);
+    // 브라우저에서 계속 이벤트를 발생시킬 수 있다.
+    // 왜 가능할까??
+    // 우리가 webApis 를 이용해서 setTimeout을 호출
+    // 우리가 등록한 시간이 지난후에 이벤트 루프가 한번 다시 돈다음에 우리가 등록한 callback을 Task Queue 에 넣게 되고
+    // Task Queue에 등록된 callback 이 다시 Callstack으로 이동하게 된다.(이때 단1개의 콜백만 callstack으로 이동)
+    // 즉 이벤트 루프가 계속 순회를 하면서 업무를 처리하게 된다.
+    // --> 가끔씩은 Render 쪽으로가서 렌더링 을 처리한다, (화면을 업데이트할 수 있다)
+</script>
+</body>
+</html>
