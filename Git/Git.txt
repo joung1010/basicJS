@@ -27,3 +27,20 @@ git config --global core.autocrlf ture(window) / input(mac)
     mac :   \n
    그래서 Git Reposiotry 를 다양한 운영체제에서 쓰는 경우에 git history나 git blame을 보는데 문제가 있을 수 있다
    이것을 수정할 수 있는 설정이 core.autocrlf
+
+   git init : git 초기화
+   ls -all : 숨겨진 폴더에 .git파일이 생겼음 (폴더 나 파일 이름 앞에. 있으면 숨겨진 폴더명임)
+   .git 폴더안에 git와 관련된 모든 정보들이 있다.
+   기본적으로 git init을 하면 master branch가 생성 된다.
+
+   rm -rf .git : git 파일 삭제
+
+   git 에서 해당 명령어에 해당하는 속성값을 확인하고 싶을때는
+   ex) git config --h
+
+   git status : git 의 상태를 볼 수 있다.
+
+   반복되는 명령어를 단축해서 쓰고 싶다면
+   git config --global alias
+   ex) git config --global alias.st status
+    --> git st 만 작성해도 status 명령어 실행된다.
