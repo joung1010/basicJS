@@ -1,0 +1,23 @@
+git config --list : git의 모든 환경설정
+
+파일로 환경설정 정보 열어보기
+git config --global -e
+깃 설정 파일을 다른 파일로 열어보고 싶을때
+code . : visual studio 로 열림
+
+code를 editor와 연동해서 사용하기
+git config --global core.editor "code" : 다른 명령어를 수행할 수 있도록 터미널이 활성화됨
+git config --global core.editor "code --wait" : 열어진 파일이 종료되기 전에는 다른 명령어 수행 불가
+
+git  사용자 정보 등록하기
+git config --global user.name "mason"               : 사용자 이름 설정
+git config --global use.email "joung4342@gmail.com" : 이메일 설정
+git config --global user.name 등록된 user name 확인
+git config --global use.email 등록된 user email 확인
+
+git config --global core.autocrlf ture(window) / input(mac)
+--> 운영체제마다 에디터로 새로운 줄바꿈을 할때 들어가는 문자열이 다르다
+    window : \r\n
+    mac :   \n
+   그래서 Git Reposiotry 를 다양한 운영체제에서 쓰는 경우에 git history나 git blame을 보는데 문제가 있을 수 있다
+   이것을 수정할 수 있는 설정이 core.autocrlf
