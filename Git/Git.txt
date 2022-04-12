@@ -107,3 +107,10 @@ git config --global core.autocrlf ture(window) / input(mac)
                             |
                             |
                             ---->   modified  :     수정됨(수정이 된 파일들만 staging area 로 옮겨 갈 수 있다.
+
+추가 untracked 된 파일들을 staging area 로 옮기려면 git add라는 명령어를 이용하면 된다.
+        그러면 즉 staging area 즉 git history 에 저장할 준비가 된다는 뜻이다 (commit할 파일들이 있다)
+
++) git add * : 디렉토리에 있는 모든 파일들을 staging area 로 이동
+git add . : 모든 파일들 포함해서 git staging area 에 추가됨
+git rm --cached * : staging area 있는 모든 파일 삭제
