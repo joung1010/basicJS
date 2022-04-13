@@ -114,3 +114,63 @@ git config --global core.autocrlf ture(window) / input(mac)
 +) git add * : 디렉토리에 있는 모든 파일들을 staging area 로 이동
 git add . : 모든 파일들 포함해서 git staging area 에 추가됨
 git rm --cached * : staging area 있는 모든 파일 삭제
+
+특 정파일을 git에 포함시키지 않고 싶을 때
+.git ignore 이라는 파일에 추가 반영 하고싶지 않는 파일명이나 경로를 추가
+
+git status -h(help) 옵션을 주면 해당 명령어 와 함꼐 사용할 수 있는 옵션들을 확인할 수 있다 default 는 long
+이때 -s (short) 옵션에서
+A : added 되었다는 뜻
+??? : untracked 파일
+AM : working directory 에 수정이 된 파일
+
+어떤 파일에 내용이 수정되었는지 확인 하고 싶을때는 git -diff 를 이용
+아무런 옵션이 없으면 working directory 에 있는 것만 비교해서 볼 수 있다.
+ex)
+diff --git a/c.txt b/c.txt
+--> a는 이전 버전(working directory에 있는 파일이라면 commit된 버전을 가리키거나 또는 staging area에
+변경된 내용이 있다면 그것이 이전버전)
+--> b 지금 버전
+
+index 12a8798..311c32c 100644 --> index : Git 내부적으로 파일들을 참고 할때 쓰는 것
+
+--- a/c.txt
++++ b/c.txt
+--> 이전버전 a/c.txt 파일과 지금버전 b/c.txt 파일을 비교
+
+@@ -1 +1,2 @@  -->- 는 이전 파일을 의미 -1 은 이전버전의 첫번째 줄봐 hellworld 는 이전버전 첫번쨰줄에서 나온 상태이고  새로 변경된 사항은 + 는 현재 파일에서 첫번째 줄에서 두번째 줄까지 확인해
+ hello world!
++add
+즉 기존 hello world! 에서 add가 추가된 상태이고 + 다음에 변경된 내용이 나온다.
+만약 줄이 삭제가 되었다면 - 내용이 표기된다.
+
+staging area 안에 있는 변경 사항을 확인하고 싶을때는
+git diff --staged/--cached 라는 옵션을 주면 된다.
+ex)
+diff --git a/b.txt b/b.txt
+new file mode 100644
+index 0000000..12a8798
+--- /dev/null       --> 이전에는 아무것도 없었는데
++++ b/b.txt     --> b.txt 파일이 추가됨
+@@ -0,0 +1 @@   --> 이전에는 아무줄도 없었지만 새로운 파일에 hello world!가 추가되었다.
++hello world!
+
+이렇게 콘솔창에서 보는 것이 어렵다면 툴과 연동시키면된다.
+git config --global -e 에서
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+	추가하고 git difftool / git difftool --cached 붙여서 실행
+
+버전 등록하기
+git commit
+아무런 옵션없이 사용하면 기본 템플릿이 나온다.
+
+git log를 이용해서 commit에 관한 log를 확인할 수 있다.
+
+git commit -m(message) "second commit" : -m 옵션을 통해서 커밋 메세지를 바로 입력가능
+
+내 working directory에 있는 변경사항을 add 없이 바로 커밋하고 싶을때는
+git commit -am "all commit"
