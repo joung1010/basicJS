@@ -169,6 +169,8 @@ git commit
 아무런 옵션없이 사용하면 기본 템플릿이 나온다.
 
 git log를 이용해서 commit에 관한 log를 확인할 수 있다.
+git log -p(patch) : commit log 와 함께 변경사항까지 확인할 수 있다.
+git log --oneline : 간단하게 해쉬코드와 commit 메세지를 확인할 수 있다.
 
 git commit -m(message) "second commit" : -m 옵션을 통해서 커밋 메세지를 바로 입력가능
 
@@ -193,3 +195,24 @@ git에서 재공하는 rm 명령어를 사용하면 해당 파일을 삭제하�
 
 git mv vs mv
 git에서 잭공하는 mv 명령어를 사용해서 파일명을 바꾸면 변경된 이름이 바로 staging area 추가된다.
+
+우리가 커밋할때 보이는 HEAD -> master 에서
+Head라는 것은
+우리가 Git 에서 commit을 하나씩 해나가면
+
+    a   <---    b   <---    c   <---    d   <- master
+  a라고 커밋 다음에 b라는 commit을 만들게 되면 b에 commit 은 이전 commit을 참고하게 된다.
+  b 의 commit 이 a 를 가리키고 있는 포인터가 생성
+  c도 마찬가지로 이전 커밋인 b의 커밋을 가리키게 된다.
+  그리고 이렇게 commit 을 해나가는 줄기 이 기본 줄기가 master branch 다
+  이때 이제 막 d를 commit 했다면 이 head 는 d를 가리키게 된다.
+  즉 head 라는 것은 지금 내가 있는 내가 바라보는 이 시점의 버전을 가리키게 된다.
+  여기 head에서 물결 모양을 쓴 다음에 1을 붙이게 되면 (head ~1)
+  지금 있는 버전의 이전 버전을 가리키게 된다.
+  head ~2 는 head에 있는 곳에서 두번째 부모를 찾아 가는 것과 동일
+
+  이렇게 만들어진 commit 들은 언제든지 내가 원할때 원하는 시점으로 돌아갈 수 있다.
+  만약 여기서 commit b로 돌아가고 싶다면 git checkout b의 해쉬코드 를 이용해서 돌아갈 수 있다.
+  이렇게 돌아가게 되면 head는 b를 가리키게 된다.
+
+   --> 즉 head 는 지금 내가 현재 바라보고 있는 commit 을 가리킨다.
