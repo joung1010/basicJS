@@ -188,3 +188,8 @@ Git Repository 는 어떤 규모의 commit 을 해나가면 적당할까???
 충돌 해결 , 버그 수정, 새로운 기능 추가등 한꺼번에 커밋하게 되면 커밋을 볼때 혼동이 오기 때문에
 commit 메세지에 맞게 해당 내용만 포함해서 커밋 하는것이 중요하다.
 
+git rm vs rm
+git에서 재공하는 rm 명령어를 사용하면 해당 파일을 삭제하는 동시에 staging area 추가된다.
+
+git mv vs mv
+git에서 잭공하는 mv 명령어를 사용해서 파일명을 바꾸면 변경된 이름이 바로 staging area 추가된다.
