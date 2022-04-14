@@ -236,6 +236,11 @@ ex)
 * 9186a41 Add LoginService module
 * 1563681 Initialise project
 
-git log --graph 옵션
-
-git log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
+점점 git log 가 많아지면 원하는 commit 을 찾기 힘들어진다
+이럴때 git tag 를 이용해서 원하는 부분에 북마크를 할 수 있다.
+장점 : 내가 원하는 곳으로 빠르게 전환할 수 있다. 보통 제품은 출시할때 그 버전을 많이 태그를 한다.
+보통 semantic versioning
+    v2.0.0
+    v2 : major 버전(특정 기능이 추가되었을때 전체적인 업데이트가 발생 했을때)
+    .0 : minor 업데이트(커다란 기능중에서 그 하위 기능이 업데이트 되거나 개선이 되었을때)
+    ,0 : fix 수정으로 구분(기존의 존재하는 기능 오류수정, 성능개선)
