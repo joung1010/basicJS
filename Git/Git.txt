@@ -171,6 +171,9 @@ git commit
 git log를 이용해서 commit에 관한 log를 확인할 수 있다.
 git log -p(patch) : commit log 와 함께 변경사항까지 확인할 수 있다.
 git log --oneline : 간단하게 해쉬코드와 commit 메세지를 확인할 수 있다.
+git log --pretty=oneline : oneline 옵션과 비슷하지만 앞에 hashcode 를 확인할 수 있다.
+git log --pretty=format:"%h(hashcode) %an(author name)" : 해당 format 옵션을 통해 우리가 원하는 format으로 변경할 수 있다.
+git log --pretty=format:"%h(hashcode) %an(author name) %ar %s" : 해쉬코드 작성자 날짜 타이틀
 
 git commit -m(message) "second commit" : -m 옵션을 통해서 커밋 메세지를 바로 입력가능
 
@@ -212,7 +215,27 @@ Head라는 것은
   head ~2 는 head에 있는 곳에서 두번째 부모를 찾아 가는 것과 동일
 
   이렇게 만들어진 commit 들은 언제든지 내가 원할때 원하는 시점으로 돌아갈 수 있다.
+
   만약 여기서 commit b로 돌아가고 싶다면 git checkout b의 해쉬코드 를 이용해서 돌아갈 수 있다.
   이렇게 돌아가게 되면 head는 b를 가리키게 된다.
 
    --> 즉 head 는 지금 내가 현재 바라보고 있는 commit 을 가리킨다.
+
+다른 branch 로 이동하고 싶다면 git checkout 브랜치명 으로 원하는 브랜치로 이동이 가능하다.
+이떄 git log를 보면 어떤 commit 이 fix 브랜치 인지 확인하기가 힘들다.
+이때 git log --oneline --graph -all : graph라는 옵션을 주면 확인할 수 있다.
+
+ex)
+* d643a6e (master) Update Welcome page      --> fix라는 브랜치가 나누어진 이후에 master 브랜치에 새로운 커밋이 생김
+| * c38c4c4 (HEAD -> fix) Fix light theme
+|/
+* b8e485f Add light theme   --> 이쪽에 fix라는 브랜치로 나누어졌다.
+* bd7bd28 Add About page
+* 328708d Add Welcome page
+* 0ad2dbb Add UserRepository module
+* 9186a41 Add LoginService module
+* 1563681 Initialise project
+
+git log --graph 옵션
+
+git log --graph --all --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(white)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --date=short
