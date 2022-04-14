@@ -1,0 +1,37 @@
+git log를 이용해서 commit에 관한 log를 확인할 수 있다.
+git log -p(patch) : commit log 와 함께 변경사항까지 확인할 수 있다.
+git log --oneline : 간단하게 해쉬코드와 commit 메세지를 확인할 수 있다.
+git log --pretty=oneline : oneline 옵션과 비슷하지만 앞에 hashcode 를 확인할 수 있다.
+git log --pretty=format:"%h(hashcode) %an(author name)" : 해당 format 옵션을 통해 우리가 원하는 format으로 변경할 수 있다.
+git log --pretty=format:"%h(hashcode) %an(author name) %ar %s" : 해쉬코드 작성자 날짜 타이틀
+
+add)
+git log -3 : 최근 commit 중에서 세개만 보겠다는 뜻
+git log --oneline -3 : 여러 옵션들과 함꼐 사용가능
+git log --author="ellie" : 작성자가 ellie인 것만
+git log --before="2020-09-08" : 지정된 날짜 이전에 commit 들만 볼 수 있다.
+git log --grep="project"   :commit 타이틀 중에서 프로젝트가 포함된 commit 을 보고 싶다면
+git log -S "about"   :소스코드 컨텐츠 안에서 문자열을 검색하고 싶다면, 즉 그 문자열을 가지고 있는 변경사항을 가지고 있는 log를 찾고싶다면
+ex) commit bd7bd2852a8765ca4deaf976971afc745d4da790
+    Author: Ellie <dream.coder.ellie@gmail.com>
+    Date:   Wed Oct 28 22:22:33 2020 +0900
+
+        Add About page
+
+여기서 자세히 확인하고 싶다면 git log -S "about" -p(patch)
+
+git log about.txt   : git log 다음에 이렇게 파일이름을 작성하면 해당 파일의 commit 을 볼 수 있다.
+
+git log HEAD : git log 와 동일한 내용
+but
+이전 부모부터 보고 싶다면
+git log HEAD~1
+
+특정 commit 에대한 로그를 좀더 자세히 확인하고싶다면 해당 커밋의 해쉬코드를 활용
+git show 0ad2dbb68fd0041(해쉬코드 일부분)
+
+만약 해당 커밋에 여러 파일이 있다면
+git show 0ad2dbb68fd0041:특정파일명명
+
+활용 : 특정 두 파일의 커밋을 비교하고 싶다면 c38c4c41 b8e485f6
+git diff 해쉬코드 해쉬코드 로 두커밋을 비교할 수 있다.
