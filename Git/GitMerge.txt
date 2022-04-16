@@ -1,0 +1,29 @@
+1. fast-forward merges
+    :master branch에서 새로운 branch 가 생성된 이후에 master branch 의 변동사항이 없다면
+    merge를 할때 단순히 master branch가 가리키고 있는 포인터를 d가 아닌 f로 롬겨 놓기만 하면 된다.
+    그리고 branch  를 삭제한다.
+
+                  -----  e <-- f <== feature A
+                  ↓
+a <-- b <-- c <-- d <== master branch
+
+                |
+                |       fast - forward merges
+                ↓
+
+                  -----  e <-- f <== master branch
+                  ↓
+a <-- b <-- c <-- d
+
+단점 : 히스토리에 merge 가 되었다는 사실이 남지 않는다.
+        feature A 브랜치가 master 브랜치에 merge 가 되었다는 것이 commit으로 남지 않는다
+
+
+2. Three-way merges
+
+                  -----  e <-- f
+                  ↓            |
+a <-- b <-- c <-- d   <---  h  ←   <== master branch
+                       (merge commit)
+
+이렇게 h라는 commit 은 d와 f 를 합한 이런 새로운 commit 을 만들어서 master branch 에 commit 하게 됩니다.
