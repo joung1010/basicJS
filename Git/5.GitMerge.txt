@@ -18,6 +18,10 @@ a <-- b <-- c <-- d
 단점 : 히스토리에 merge 가 되었다는 사실이 남지 않는다.
         feature A 브랜치가 master 브랜치에 merge 가 되었다는 것이 commit으로 남지 않는다
 
+만약 merge 할때 fast forward 를 하고 싶지 않을때
+git merge --no-ff 브랜치명: 해당 옵션을 주면 fast-forward 하지마 라는 옵션
+--> merge commit이 생성됨
+
 
 2. Three-way merges
 
