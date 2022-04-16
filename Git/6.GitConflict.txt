@@ -1,0 +1,101 @@
+1. conflict
+    : git 이 merge 를 할때 무언가 문제가 있어서 자동적으로 해결이 안되고 무언가 충돌이 발생 했을때
+    즉 두 가지의 branch 에서 동일한 파일을 수정을 했다면 Git은 둘중 어떤 내용을 추가해야 하는지 모른다
+    이럴때 conflict 가 발생한다.
+    --> 이런 경우 직접 수정을 해줘야 한다.
+
+    *  [7bccbf9] | third commit on master   (HEAD -> master)
+    | *  [5e26876] | second commit on feature   (feature)
+    |/
+    *  [c133623] | first commit on master
+
+    해당 커밋은 동일한 파일을 수정한다.
+
+    git merge feature
+
+    Auto-merging main.txt
+    CONFLICT (content): Merge conflict in main.txt
+    Automatic merge failed; fix conflicts and then commit the result.
+----------------------------------------------------------------
+    git status
+
+    On branch master
+    You have unmerged paths.
+      (fix conflicts and run "git commit")
+      (use "git merge --abort" to abort the merge)
+
+    Unmerged paths:
+      (use "git add <file>..." to mark resolution)
+            both modified:   main.txt
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+-------------------------------------------------------------------
+
+
+
+cat main.txt
+
+What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+ It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+ It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+ and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+<<<<<<< HEAD
+Oh.. Here!! From master branch!
+=======                                             ==> 이부분에 알 수 없는 문자열이 추가됨
+Oh.. Here!! From feature branch!
+>>>>>>> feature
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
+ and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident,
+ sometimes on purpose (injected humour and the like).
+
+-------------------------------------------------------------
+
+<<<<<<< HEAD
+Oh.. Here!! From master branch!
+=======
+Oh.. Here!! From feature branch!
+>>>>>>> feature
+
+--> 이부분은 git 에서 merge conflict 가 어디서 발생했는지 우리에게 정보를 알려주기위해서 자동으로 삽입됨
+
+우리가 바라보는 commit branch 에서 발생한 내용 부분
+<<<<<<< HEAD
+Oh.. Here!! From master branch!
+=======
+그리고 feature branch 에서 발생한 부분
+Oh.. Here!! From feature branch!
+>>>>>>> feature
+
+--> git 에서는 동일한 부분에서 master branch 와 feature branch 가 서로 다른 내용이 들어 있어서
+어떤 걸 자동으로 merge 해야 되는지 잘 모르겠다. 해결해줘!!!
+
+이대 conflict 를 해결하면 그 해결사항만 커밋하자 다른 내용을 추가로 작성하지 말자
+
+git merge --abort : merge 취소
+
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   main.txt
+
+--> confliect 해결 하면 git add를 해줘
+ git status
+
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   main.txt
+
+그다음 마저 merge를 하고 싶으면
+git merge --continue
+
