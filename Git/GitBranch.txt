@@ -20,3 +20,22 @@ a <-- b <-- c <-- d <== master branch
 이렇게 특정 branch 의 commit 을 모두 merge 하는 경우도 있지만 그렇게 모든 commit을 merge 하기보다는
 feature A branch 의  commit e 와 f 의 commit 을 합해서 새로운 commit 을 만든 다음에 그 commit만 master branch로 가지고 오는 방법을 선호
 
+git branch : 지금 repository 에 있는 branch 를 확인 가능
+git branch -all  :만약 원격 GitHub 와 같은 서버와 연결된 Repository 라면 -all 옵션을 통해 서버와 연결된 branch를 모두 보여준다.
+git branch branch명 : 해당 이름의 branch가 만들어진다.
+git branch -v : 브랜치별 최신 commit 만 확인 가능
+git branch --merged : 현재 브랜치에 merge 가 된 branch 들을 확인 가능
+git branch --no-merged : 현재 브랜치에 merge 가 되지않은 branch를 확인 가능, 즉 master branch  에서 파생된 다른 변경사항 다른 commit 이 있는 경우
+git branch -d 브랜치 이름 : 해당 브랜치 삭제
+git branch --move 브랜치명 변경이름: 해당 브랜치의 이름을 변경함
+
+git push origin --delete 브랜치명 : 원격 저장소에 있는 브랜치 삭제
+git push --set-upstream origin fix-welcome : 변경된 branch의 이름을 원격 Repository 에 update 하고 싶을때
+
+git switch 브랜치명 : 해당 branch 로 이동
+git switch -C 브랜치명 : 새로운 브랜치가 만들어지고 해당 브랜치로 이동
+
+git checkout 해쉬코드/브랜치명 : 해쉬 코드를 통해 해당 해쉬코드의 커밋으로 이동/원하는 브랜치로 이동
+git checkout -b 브랜치명 :  새로운 브랜치가 만들어지고 해당 브랜치로 이동
+
+git log mast..test : 해당 두 branch 사이의 commit들을 보여줌
