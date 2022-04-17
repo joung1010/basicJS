@@ -1,0 +1,33 @@
+1. cherry pick
+    :특정 브랜치에서 딱 그 한 기능만 master branch 로 merge 하고 싶을때
+    --> 내가 작업중인 service 브랜치에서 이 f라는 commit만 master branch 에 필요하다면
+
+a <-- b <-- c <-- d   <== master
+                  ↑
+                  e <-- f  <-- g    <== service
+
+
+a <-- b <-- c <-- d <-- f   <== master
+                  ↑
+                  e <-- f  <-- g    <== service
+
+이처럼 cherry pick 원하는 commit 만 쏙 가져올 수 있다
+
+ex)
+* [2020-10-28] [467b2f7] | Add profile UI    (HEAD -> UI)
+| * [2020-10-28] [f2b9178] | Add ProfileService Interface    (service)
+| * [2020-10-28] [cd9c9e7] | Add tests for ProfileService
+| * [2020-10-28] [dc89240] | Add ProfileService
+|/
+* [2020-10-28] [bbac9d0] | Add LoginService    (master)
+
+내가 필요한 커밋의 해쉬코드를 복사한다음에
+git cherry-pick f2b9178(해쉬코드)
+
+* [2020-10-28] [780e651] | Add ProfileService Interface   (HEAD -> master)
+* [2020-10-28] [467b2f7] | Add profile UI    (HEAD -> UI)
+| * [2020-10-28] [f2b9178] | Add ProfileService Interface    (service)
+| * [2020-10-28] [cd9c9e7] | Add tests for ProfileService
+| * [2020-10-28] [dc89240] | Add ProfileService
+|/
+* [2020-10-28] [bbac9d0] | Add LoginService    (master)
