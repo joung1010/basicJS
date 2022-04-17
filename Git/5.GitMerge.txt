@@ -49,3 +49,27 @@ a <-- b <-- c <-- d <-- g  <-- h <== master branch
 
 git merge 명령어를 사용하면 fast-forward 가 가능하면 fast-forward 를 실시하고 그렇지 않을때는
 merge commit 을 하게된다.
+
+add) Three-way merges 를 해야 하는 상황해서 fast-forward merges 는 못하는 걸까????
+
+                  -----  e <-- f    <== feature A
+                  ↓
+a <-- b <-- c <-- d <-- g       <== master branch
+
+feature A 가 파생된 시점인 즉 feature A 의 첫번째 commit 인 e 가 가리키고 있는 commit d 이것이 파생된 commit 이다.
+단순히 e 가 가리키고 있는게 d 가 아니라 g 로 변경한다면
+
+                        -----  e <-- f    <== feature A
+                        ↓
+a <-- b <-- c <-- d <-- g       <== master branch
+
+즉 feature A 브랜치를 master 브랜치의 가장 최신버전 g 로 rebase를 한다면 이 상황에서는 fast-forward가 가능하다.
+주의사항 : 만약 나혼자 feature A 브랜치를 사용하고 있으면 언제든지  rebase 가 가능하지만 만약 다른 사람들과 함께 feature A 브랜치를 사용하고 있다면
+조금 주의할 필요가 있다.
+
+rebase  를 하게되면 e가 가리키고 있는 포인터를 d 가 아니라 g 로 변경해야 되는데
+이렇게 포인터의 정보를 변경하게 되면 기존의 commit 을 유지하는 것이 아니다 .
+commit 은 불변의 진리 이다. 그래서 변경사항이 발생하게 되면 새로운 commit 을 만들게 된다.
+즉 겉으로는 똑같아 보이지만 실제로는 다른 e 와 f 의 커밋이 생기기 때문이다
+만약 다른 개발자가 해당 branch 에서 작업하고 있다면 내가 rebase 하고 push를 해서 서버에 업데이트 하게 도면
+다른 개발자가 가지고 있는 feature A 의 e 와 f 는 전혀 다른 commit 이기 때문에 merge conflict 가 발생할 수 있다.
