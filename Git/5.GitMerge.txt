@@ -50,7 +50,7 @@ a <-- b <-- c <-- d <-- g  <-- h <== master branch
 git merge 명령어를 사용하면 fast-forward 가 가능하면 fast-forward 를 실시하고 그렇지 않을때는
 merge commit 을 하게된다.
 
-add) Three-way merges 를 해야 하는 상황해서 fast-forward merges 는 못하는 걸까????
+add 1) Three-way merges 를 해야 하는 상황해서 fast-forward merges 는 못하는 걸까???? (rebase)
 
                   -----  e <-- f    <== feature A
                   ↓
@@ -94,3 +94,34 @@ ex)
 4. git merge feature A 를 해서 fast forward 가능
 
 5. 필요 없는 branch 삭제 git branch -d 브랜치 이름
+
+
+
+add 2) rebase --onto
+    특정 서비스에 의존적인 UI를 만들다가 굳이 서비스가 필요가 없어서 이 service 없이 해당 UI 만 master 브랜치에 merge 하고 싶을때
+
+a <-- b <-- c <-- d   <== master
+                  ↑
+                  e <-- f  <-- g    <== service
+                  ↑
+                  h <-- i           <== UI
+
+먼저 이 UI 브랜치가 master 브랜치를 가리키고 있으면 편하지 않을까??
+
+                  h <-- i           <== UI
+                  ↓
+a <-- b <-- c <-- d   <== master
+                  ↑
+                  e <-- f  <-- g    <== service
+
+그래서 rebase --onto 옵션을 통해 master 브랜치로 rebase 를 한다
+    --> service 브랜치에서 파생된 UI 브랜치만 master 브랜치로 rebase 할꺼야!
+주의점 : 컽으로는 동일한 커밋처럼 보이지만 새로운 커밋이다!
+
+ex) git rebase --onto master service UI : master 브랜치에 service에 파생된 UI 브랜치를 rebase 하자
+* [2020-10-28] [467b2f7] | Add profile UI    (HEAD -> UI)
+| * [2020-10-28] [f2b9178] | Add ProfileService Interface    (service)
+| * [2020-10-28] [cd9c9e7] | Add tests for ProfileService  
+| * [2020-10-28] [dc89240] | Add ProfileService  
+|/
+* [2020-10-28] [bbac9d0] | Add LoginService    (master)
