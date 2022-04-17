@@ -6,3 +6,45 @@ branch 를 이동하게 되었을때 내가 한 작업을 커밋은 할 수 없�
 stack 처럼 아이템을 넣으면 pop 할 수 있다.
 --> Git history 에 저장 하지 않고도 작업하는 내용들을 잠시 저장해 둘 수 있다.
 ex) 다른 브랜치로 전환할떄 , 버그 수정시 여러 시도를 할때 각각의 시도를 잠시 저장해두고 싶을때
+
+1.git stash push -m "first try"
+
+git stash push -m "second try" --keep-index : 내가 현재 작업하는 파일 그대로 내 staging area에 두고 싶다면
+
+이때 새로운 파일이 생성하고 git stash 를 하면  untracked 되지 않은 파일은 자동으로 stash에 저장이 되지않는다.
+
+git stash -u(untracking) : untracked 되지 않은 파일도 stash stack 에 저장
+
+2. git stash list : stash stack 의 내용을 확인할 수 있다.
+ex)
+stash@{0}: WIP on master: 3345766 feature a
+stash@{1}: WIP on master: 3345766 feature a
+stash@{2}: On master: second try
+stash@{3}: On master: firt try
+
+3. git stash show stash@{3}(stash id)  :    해당 stash stack 에 내용을 보고싶으면
+ex)  about.txt | 1 +
+     1 file changed, 1 insertion(+)
+
+git stash show stash@{3} -p : 상세내용 확인
+ex) diff --git a/about.txt b/about.txt
+    index 31c556b..07a426e 100644
+    --- a/about.txt
+    +++ b/about.txt
+    @@ -1 +1,2 @@
+     about page
+    +add
+
+4. git stash apply : 가장 최근에 들어간 stash stack 이 적용
+git stash apply stash@{3}(stash id) : 특정 stash id 가 적용
+
+--> 나의 working directory 로 다시 작업파일이 적용 이때 git stash list는 그대로 유지 된다.
+
+
+5. git stash pop : stash stack 의 가장 위에 있는 내용이 working directory 로 옮겨져 나온다.
+    --> 이떄 stash stack 에서 해당 목록이 사라진다.
+
+6. git stash drop stash@{0} :   그리고 해당 stash stack 에서 특정 목록을 지우고 싶다.
+   git stash clear : stash stack 전부 삭제
+
+add) git stash branch 브랜치 명 : stash stack에 있는 변경 사항들을 새로운 브랜치에 적용하고 싶을때때
