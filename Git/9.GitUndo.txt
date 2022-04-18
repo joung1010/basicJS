@@ -9,9 +9,23 @@ local 에서 작업하고 있는 staging area 나 working directory 에서 작�
 
 +) git restore --source=해쉬코드 파일명  : 어던 commit 으로부처 파일을 초기화 할 건지 지정할 수 있다.
    git restore ----source=Head~2 파일명
++) git clean -fd : untracked 한 파일들을 삭제 해주는 명령어
 
 3. git reset Head . :staging 에 있는 모든 파일들이 다시 working directory 로 옮겨가게됨
                       --> 특정한 포인터 여기서는 HEAD 버전에 맞게 초기화 해달라고 할때
+   git reset 해쉬코드   :   HEAD 가 가리키는 포인터를 해당 커밋으로 초기화 시킴
+   git reset Head~순번
+이때 그냥 git reset 을 사용하면 git reset --mixed 옵션을 사용한 것과 동일하다.
+즉, version history 에서는 commit을 삭제하지만 작업하고 있던 내용들은 working directory에 옮겨 놓는 그런 역할을 한다.
+
++) git reset --soft 해쉬코드/HEAD~순번 : git staging area 로 초기화
+                                      --> 변경된 내용들을 staging area로 가지고 온다.
+
+   git reset --hard : 현재 가리키고 있는 포인터가 HEAD를 가리키고 있고 그상태에서 초기화를 한다는 것은 내가 마지막으로 커밋하고
+                    수정한 모든 local의 파일들을 초기화 한다는 것과 동일하다.
+
+즉 이 reset 이라는 것은 특정 commit 으로 초기화 할 수 있고 초기화 할때 변경했던 모든 내용들을 다시 local에 가지고오거나
+    완전히 삭제하거나 이렇게 옵션들이 나눠져 있다.
 
 4.  git commit --amend -m "Add new file": git commit 이름을 잘못했을 때(가장 최신 commit 단 아직 서버에 push 하지 않았을때)
 
