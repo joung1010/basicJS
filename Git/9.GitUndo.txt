@@ -31,3 +31,32 @@ local 에서 작업하고 있는 staging area 나 working directory 에서 작�
 
 5. git commit --amend: 이미 commit 된 파일의 내용을 수정해야 되는 경우(가장 최신 commit 단 아직 서버에 push 하지 않았을때)
                 --> commit 메세지는 그대로인데 내용만 수정이 되어있음
+
+6. git reflog : reference log 의 줄임말로 바로 이전에 HEAD가 가리키고 있었던 내용들을 다 기억하고 있음으로써
+                우리가 원하는 시점으로 다시 돌아갈 수 있게 된다.
+                --> 우리가 여태까지 실행했던 명령어들 과 그것으로 부터 변경되었던 HEAD 가 가리키고
+                있었던 포인트 까지 확인할 수 있다.
+
+ex)98955fc (HEAD -> master) HEAD@{0}: reset: moving to HEAD~2
+   fa7bbd6 HEAD@{1}: reset: moving to HEAD
+   fa7bbd6 HEAD@{2}: reset: moving to HEAD~1
+   e94152f HEAD@{3}: reset: moving to HEAD~2
+   585ecb4 HEAD@{4}: commit (amend): add new file
+   976bd10 HEAD@{5}: commit (amend): add new file
+   8286ee2 HEAD@{6}: commit: .
+   0ddd7ab HEAD@{7}: commit: Add payment UI
+   e94152f HEAD@{8}: commit: .
+   fa7bbd6 HEAD@{9}: commit: Add payment client
+   1d11be8 HEAD@{10}: commit: WIP
+   98955fc (HEAD -> master) HEAD@{11}: reset: moving to HEAD^
+   0440fb9 HEAD@{12}: commit: WIP
+   98955fc (HEAD -> master) HEAD@{13}: commit: Add payment library and Add payment service
+   707de7d HEAD@{14}: commit: Setup Dependencies
+   20ee16f HEAD@{15}: commit (initial): Initialise Project
+
+돌아가고 싶은 시점의 해쉬코드를 복사해서
+git reset 해쉬코드
+
+주의 사항 : 언제든지 돌아갈 수 있지만 단 commit 이 이전에 된 상태에서만 가능!!!!
+          만약 아직 commit을 하지 않은 상태에서 local에 있는 파일을 git reset --hard로 초기화 했다면
+          다시 돌아갈 확률이 작다.
