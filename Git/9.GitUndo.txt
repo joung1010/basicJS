@@ -60,3 +60,10 @@ git reset 해쉬코드
 주의 사항 : 언제든지 돌아갈 수 있지만 단 commit 이 이전에 된 상태에서만 가능!!!!
           만약 아직 commit을 하지 않은 상태에서 local에 있는 파일을 git reset --hard로 초기화 했다면
           다시 돌아갈 확률이 작다.
+
+7. git revert 해쉬코드  : 해당 commit 에서 변경했던 모든 내용들을 다 삭제하고 예전으로 돌려 주는 그런 commit 을 만들게 된다.
+   git revert HEAD~순번
+   --> master branch 에 문제가 발생한 commit 들, 내가 다시 돌리고 싶은 것들, history에 남겨놓고 싶은 아이들
+       즉 이미 server master branch 에 commit 된 파일이라면 reset, rebase 를 이용하기 보다는 revert를 이용하는 것이 좋다.
+
++) git revert --no-commit : 바로 commit을 하지 않고 취소되는 변경사항을 staging area로 이동시켜 준다.
