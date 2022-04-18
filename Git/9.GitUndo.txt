@@ -67,3 +67,39 @@ git reset 해쉬코드
        즉 이미 server master branch 에 commit 된 파일이라면 reset, rebase 를 이용하기 보다는 revert를 이용하는 것이 좋다.
 
 +) git revert --no-commit : 바로 commit을 하지 않고 취소되는 변경사항을 staging area로 이동시켜 준다.
+
+8. git rebase -i(interactive) 해쉬코드
+    interactive rebasing  :최신 버전 커밋이 아닌 이전 버전 커밋들을 수정
+    --> 단 rebasing 을 하는 순간 특정 commit 을 수정하는 순간 그 수정된 커밋 앞에 있는 모든 포인터들이 업데이트 된다.
+        이때 내가 수정하고 싶은 commit 의 이전 해쉬코드 부터 시작해야 된다.
+
+주의사항: 기존에 존재하는 history를 수정하는 것 이기때문에 서버에 업로드된 경우라면 피하는게 좋다.
+ex)
+* [2020-11-01] [0ddd7ab] | Add payment UI    (HEAD -> master)
+* [2020-11-01] [e94152f] | .  
+* [2020-11-01] [fa7bbd6] | Add payment client  
+* [2020-11-01] [1d11be8] | WIP      <-- 이부분을 rebasing 하게 된다면
+그앞에 있는 모든 포인터들  0ddd7ab,  e94152f, fa7bbd6 은 전부 새로운 아이템이 된다.
+즉 1d11be8 이부분을 수정하게 된다면
+결과 적으로 그 앞에 있는 commit 들을 포함해서 총 4개의 history 가 업데이트 된다.
+--> git rebase i 98955fc
+* [2020-11-01] [98955fc] | Add payment library and Add payment service  
+* [2020-11-01] [707de7d] | Setup Dependencies  
+* [2020-11-01] [20ee16f] | Initialise Project
+
+rebasing -i 옵션들
+# p, pick <commit> = use commit
+    --> 이 변경사항 괜찮아 이거써
+# r, reword <commit> = use commit, but edit the commit message
+    --> 괜찮은데 메세지는 변경해야겠어
+# e, edit <commit> = use commit, but stop for amending
+    --> commit은 할건데 안에 변경사항은 바꿔야겠어
+# s, squash <commit> = use commit, but meld into previous commit
+    --> 여려개의 커밋을 하나로 묶을꺼야 (메세지 남김)
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+#                    commit's log message, unless -C is used, in which case
+#                    keep only this commit's message; -c is same as -C but
+#                    opens the editor
+    --> squash와 비슷한데 메세지는 안남김
+# d, drop <commit> = remove commit
+    --> 해당 커밋 제거
