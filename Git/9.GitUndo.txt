@@ -11,9 +11,7 @@ local 에서 작업하고 있는 staging area 나 working directory 에서 작�
    git restore ----source=Head~2 파일명
 +) git clean -fd : untracked 한 파일들을 삭제 해주는 명령어
 
-3. git reset  :staging 에 있는 모든 파일들이 다시 working directory 로 옮겨가게됨
-                      --> 특정한 포인터 여기서는 HEAD 버전에 맞게 초기화 해달라고 할때
-   git reset 해쉬코드   :   HEAD 가 가리키는 포인터를 해당 커밋으로 초기화 시킴
+3. git reset 해쉬코드   :   HEAD 가 가리키는 포인터를 해당 커밋으로 초기화 시킴
    git reset Head~순번
 이때 그냥 git reset 을 사용하면 git reset --mixed 옵션을 사용한 것과 동일하다.
 즉, version history 에서는 commit을 삭제하지만 작업하고 있던 내용들은 working directory에 옮겨 놓는 그런 역할을 한다.
