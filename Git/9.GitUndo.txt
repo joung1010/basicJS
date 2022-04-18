@@ -12,3 +12,8 @@ local 에서 작업하고 있는 staging area 나 working directory 에서 작�
 
 3. git reset Head . :staging 에 있는 모든 파일들이 다시 working directory 로 옮겨가게됨
                       --> 특정한 포인터 여기서는 HEAD 버전에 맞게 초기화 해달라고 할때
+
+4.  git commit --amend -m "Add new file": git commit 이름을 잘못했을 때(가장 최신 commit 단 아직 서버에 push 하지 않았을때)
+
+5. git commit --amend: 이미 commit 된 파일의 내용을 수정해야 되는 경우(가장 최신 commit 단 아직 서버에 push 하지 않았을때)
+                --> commit 메세지는 그대로인데 내용만 수정이 되어있음
