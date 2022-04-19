@@ -8,3 +8,7 @@ local history 문제점 : 로컬 pc에 문제가 생기거나 다른 환경에�
 3. push : 내가 local 에서 작업한 내용을 서버어 올리고 싶을때 사용
 
 4. pull : server에 업데이트 된 내용을 나의 local 에 update 하고 싶을때 사용
+
+5. fork : 기존에 존재하던 repository 에 commit 해 나가는 것이 아니라 나의 repository 에 동일하게 복사해서 가져오는 것
+    pr(pull request) :  나의 repository 에 commit 한 내용들은 제출
+    rebase: 내가 fork 한 repository 가 새롭게 업데이트가 됬다면 rebase 를 통해 최신 버전으로 sync 를 맞추고 merge 할 수 있다.
