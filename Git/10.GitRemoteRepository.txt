@@ -1,0 +1,10 @@
+1. remote
+local history 문제점 : 로컬 pc에 문제가 생기거나 다른 환경에서 작업하고싶을때 repository에 접근이 불가능
+--> 그래서 remote라는 server에 나의 git repository 업로드 해두어서 항상 다른 PC에서도 접근 가능하고
+    다른 개발자들과 협업도 가능하다.
+
+2. clone : 이미 서버에 존재하는 repository 를 가지고 올때 이용
+
+3. push : 내가 local 에서 작업한 내용을 서버어 올리고 싶을때 사용
+
+4. pull : server에 업데이트 된 내용을 나의 local 에 update 하고 싶을때 사용
