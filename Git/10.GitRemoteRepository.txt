@@ -12,3 +12,34 @@ local history 문제점 : 로컬 pc에 문제가 생기거나 다른 환경에�
 5. fork : 기존에 존재하던 repository 에 commit 해 나가는 것이 아니라 나의 repository 에 동일하게 복사해서 가져오는 것
     pr(pull request) :  나의 repository 에 commit 한 내용들은 제출
     rebase: 내가 fork 한 repository 가 새롭게 업데이트가 됬다면 rebase 를 통해 최신 버전으로 sync 를 맞추고 merge 할 수 있다.
+
+---------------------------------------------------------------------------
+
+1. remote repository 를 나의 local pc로 가져오기
+
+    git repository 에서 code 버튼을 클릭
+    --> 해당 repository 를 직접 zip 파일로 다운로드 하거나 해당 repository 의 주소를 복사할 수 있다.
+
+    git clone 깃 repository 주소
+
+2. git remote : 서버 repository 정보를 확인할 수 있다.
+                기본적으로 이름은 origin
+   git remote -v : 이 orgin이 어떤걸 가리키고 있는 지 정확한 정보를 확인할 수 있다.
+   ex) origin  https://github.com/joung1010/practiceWeb.git (fetch)
+       origin  https://github.com/joung1010/practiceWeb.git (push)
+
+  git remote add origin이름 서버이름 : 현재 폴더에 다른 github 링크를 추가하고 싶을때 사용
+                                    만약 fork repository 라면 다수의 origin을 설정할 수 있다.
+ ex) git remote add server(origin 이름이 server임) 서버이름
+
+ git remote show origin이름 : orgin 정보를 상세히 확인 가능
+  remote origin
+   Fetch URL: https://github.com/joung1010/practiceWeb.git
+   Push  URL: https://github.com/joung1010/practiceWeb.git
+   HEAD branch: main
+   Remote branch:
+     main tracked
+   Local branch configured for 'git pull':
+     main merges with remote main
+   Local ref configured for 'git push':
+     main pushes to main (up to date)
