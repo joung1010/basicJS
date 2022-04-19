@@ -43,3 +43,16 @@ local history 문제점 : 로컬 pc에 문제가 생기거나 다른 환경에�
      main merges with remote main
    Local ref configured for 'git push':
      main pushes to main (up to date)
+
+3. git push : 로컬에 있는 history 를 서버에 업데이트
+
+* [2022-04-19] [635482f] | ADD NEW FILE {{Mason}}  (HEAD -> main) <-- 현재 local 에 있는 HEAD는 4번째를 가리키고 있음
+* [2021-02-23] [ad34c29] | first version {{joung1010}}  (origin/main, origin/HEAD) <-- 깃허브 서버는 현재 3번째 커밋까지 들어가 있음
+* [2021-02-23] [59a53b7] | first version {{joung1010}}
+* [2021-02-23] [5a976b1] | Initial commit {{joung1010}}
+
+즉 로컬이 origin 보다 commit 이 하나 더 앞서가 있는 것을 확인
+추가)git remote set-url origin https://깃아이디:토큰@github.com/깃아이디/레포지토리명.git
+git push 등의 명령어 접근하기위해서 깃 계정 비밀번호를 사용했으나 계정에서 토근을 생성해서 접근하는 방식으로 변경
+토큰 생성하는법:
+git profile -> settings -> Developer settings -> Personal access tokens
