@@ -1,0 +1,39 @@
+git 에서 local 과 server 와 함꼐 연동해서 작업하는 경우
+
+local
+
+          origin/master
+           ↓
+    a <--  b
+           ↑
+           master
+
+
+server
+나의 local 에서는 server 에 있는 branch를 origin이라고 붙여서 표기
+    a <--  b
+           ↑
+           master
+
+
+1. fetch
+이때 fetch 를 이용하는 경우에는 server 에 있는 git history를 받아와서 나의 git history를 업데이트
+
+              origin/master
+                    ↓
+    a <--  b  <--   c
+           ↑
+           master
+
+point : fetch 는  history 를 업데이트 하지만 내가 현재 바라보고 있는 작업환경 HEAD 는 그대로 유지
+즉 이제 history 는 c 라는 commit 을 가지고 있지만 나의 local master branch 는 B를 가리키고 있다.
+
+2. pull
+반대로 pull 이라는 명령어는 server 에 있는 history를 가지고 오면서 나의 local 에 있는 내용을 함께  merge
+
+              origin/master
+                    ↓
+    a <--  b  <--   c
+                    ↑
+                  master
+
