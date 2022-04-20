@@ -55,4 +55,14 @@ git fetch origin
 또는 특정 branch 가 있다면
 git fetch origin master
 
+2. git pull :  server 에 있는 내용을 받아와서 나의 local 버전도 server와 함꼐 동일하게 만들고 싶다면 사용
+
+* [2022-04-20] [a8a288b] | Update add.txt {{mason park}}  (HEAD -> main, origin/main, origin/HEAD)
+* [2022-04-20] [99cfac1] | test {{mason park}}
+* [2022-04-20] [1bc07a7] | NEW FILE {{mason park}}
+* [2022-04-20] [4f9e583] | Initial commit {{mason park}}
+
+내 local 에 있는 HEAD 와 server 에 있는 HEAD 들이 동일한 commit 을 가리키고 있다
+
+git pull --rebase : git conflict commit을 만들지 않고 기존 commit을 유지한다.
 
