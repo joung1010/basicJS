@@ -37,3 +37,22 @@ point : fetch 는  history 를 업데이트 하지만 내가 현재 바라보고
                     ↑
                   master
 
+
+
+----------------------------------------------------------
+1. git fetch
+* [2022-04-20] [2030e3c] | Update add.txt {{mason park}}  (origin/main, origin/HEAD)
+* [2022-04-20] [99cfac1] | test {{mason park}}  (HEAD -> main)
+* [2022-04-20] [1bc07a7] | NEW FILE {{mason park}}
+* [2022-04-20] [4f9e583] | Initial commit {{mason park}}
+
+server 에 있는 history 를 가지고 왔고 server 에 있는 orgin에 있는 main 과 origin 에 있는 HEAD 는
+가장 최신 commit 을 가리키고 있지만
+나의 local HEAD 는 여전히 3번째 commit 을 가리키고 있다.
+--> 내가 작업하고 있는 HEAD 는 유지하면서 server 에 업데이트된 history 정보만 가지고 올때 fetch를 사용
+
+git fetch origin
+또는 특정 branch 가 있다면
+git fetch origin master
+
+
