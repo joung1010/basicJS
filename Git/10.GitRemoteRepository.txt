@@ -85,3 +85,9 @@ Host github.com
   내용 추가
 
   ssh -T git@github.com 해당명령어로 인증하기 인증할때 ssh key 비밀번호 확인
+
+
+  3.1 git push -f(force) : 서버에 있는 내용은 무시하고 내 local에 있는 수정사항을 무조건 받아줘줘
+
+  4. git remote add origin 주소 : git remote 저장소 설정
+
