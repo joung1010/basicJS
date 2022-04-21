@@ -113,6 +113,12 @@ git config --global core.autocrlf ture(window) / input(mac)
 
 +) git add * : 디렉토리에 있는 모든 파일들을 staging area 로 이동
 git add . : 모든 파일들 포함해서 git staging area 에 추가됨
+추가 적으로
+git add -A는 정말 모든 것을 추가하는 것을 의미하고,
+git add *과 git add . 은 거의 비슷한데, 파일이 삭제된 후에 처리에서 약간 차이가 있다.
+파일삭제 후, git add * 를 할 경우, 삭제했던 파일은 Staging Area에 남아있는 반면,
+파일삭제 후, git add . 을 할 경우, 삭제했던 파일도 Staging Area에서 사라진다. 
+
 git rm --cached * : staging area 있는 모든 파일 삭제
 
 특 정파일을 git에 포함시키지 않고 싶을 때
