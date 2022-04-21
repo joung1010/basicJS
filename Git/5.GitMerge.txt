@@ -1,7 +1,7 @@
 1. fast-forward merges
     :master branch에서 새로운 branch 가 생성된 이후에 master branch 의 변동사항이 없다면
     merge를 할때 단순히 master branch가 가리키고 있는 포인터를 d가 아닌 f로 롬겨 놓기만 하면 된다.
-    그리고 branch  를 삭제한다.
+    그리고 branch  를 삭제한다.(git merge 브랜치명) 단 먼저 merge 하고싶은 branch 로 checkout 해야 된다.
 
                   -----  e <-- f <== feature A
                   ↓
