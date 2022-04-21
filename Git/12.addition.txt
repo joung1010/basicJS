@@ -1,0 +1,55 @@
+1. git blame 파일명
+: 해당 파일에 존재하는 코드들이 어떤 commit에 의해서 누구에 의해서 도입 되었는지 확인 가능
+
+2. git bisect
+: 분명 이전에는 잘 동작했는데 요즘들어 잘 동작하지 않을때 사용
+
+commit history
+        --------    가장최근에는 기능이안됨 Bad
+           |
+           |
+           |
+        --------  이쯤
+           |
+           |
+           |
+        --------  또는  이쯤 에서 새로운 커밋이 도입되었는데 그때부터 기능이 잘 안되는거 같음
+           |
+           |
+           |
+        --------    한 이쯤에는 어떤 기능이 잘 동작했는데   (기능이 잘됨) Good
+           |
+        --------
+           |
+           |
+           |
+           |
+        --------
+
+그래서 뭔가 문제가 발생했을때  잘되는 부분에 good 가장 최근 문제가 생기는 commit 은 bad 라고 설정해 놓으면
+이진탐색 알고리즘을 이용해서 많은 commit 이 중간에 있더라도 빠르게 문제의 commit을 찾아낼 수 있다.
+
+1. 잘 되었던 commit으로 checkout
+    git checkout 해쉬코드
+    해당 commit 으로 이동해서 정말 문제없이 잘 작동했는지 확인
+    git bisect start 라는 명령어로 시작
+    git bisect good
+
+2. 가장 최신 master 로 돌아간다.
+    가장 최신버전에 문제가 발생하는지 확인
+    git bisect bad
+
+3. 그러면 good 과 bad 사이의 commit 들중 어느 중간지점에 checkout 이 된다.
+    그러면 그 중간지검에서 다시 해당 문제가 발생하는지 확인하고 문제가 없다면 다시
+    git bisect good 명령어 실행
+
+4. 다시 다음 commit 으로 이동  해서 문제가 발생하는지 check 하고
+    만약 문제가 발생한다면
+    git bisect bad
+
+5. 그러면 다시 good 과 bad 사이의 commit들중 한곳으로 checkout 하게 된다.
+
+6. 그렇게 good 과 bad를 표시하면서 마지막 commit 까지 도달하게되면
+최종 결과물을 확인할 수 있다.(최종적으로 나쁜 commit을 잧아준다)
+
+7. git bisect reset 을 이용하면 다시 원래 branch로 돌아갈 수 있다.
