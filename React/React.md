@@ -22,6 +22,20 @@ React를 통해 웹 applicatoin, React Native 를 통해 Mobile applicatoin, Rea
       React의 라이브러리도 같이 다운로드 받은 후에 사용자 화면에 UI가 표기되기 떄문에 Client 측에서 Rendering이 이루어 진다.
     * React와 함께 Next.Js 와 Gatsby 같은 프레임워크를 사용하면 SSR(Server Side Rendering)도 구현 가능하다.
 
+### Framework 와 library 의 차이  
+통상적으로 FrameWorks 라고 하면 우리가 무언가를 만드는데 필요한 모든 것들이 갖춰지고 제공되어지는 것이라고 생각하면 된다.  
+만약 Web FrameWorks 라고 하면 UI, Routing, HTTP Clients(네트워크 통신), State management(대용량 데이터 처리) 등 과 같이 이 모든 것들이  
+포함되어져 있는 것을 말한다.  
+즉, 집을 짓는데 필요한 모든 골격이 전부 갖춰졌다고 생각하면 된다.(정해진 틀이 있고 그안에서 원하는 것을 만들어 나간다.)  
+이렇게 모든 것들이 갖춰져있는 Frameworks의 대표가 Angular, 안드로이드, IOS 등이 있다.  
+  
+반면에 Libraries 는 이렇게 골격이 갖추어지지 않았고 UI, Routing, HTTP Clients(네트워크 통신), State management(대용량 데이터 처리)와 같이  
+작은 Solution 단위를 Library라고 한다.  
+대표적으로 React는 많은 해결책중에서 UI를 만들 수 있게 해주는 라이브러리 이다.  
+그러면 View는 어디에 속해있을까???  
+View는 Angular 처럼 FrameWork 에 속하지만 HTTP Clients(네트워크 통신), State management(대용량 데이터 처리)가 제공되지 않기때문에  
+조금더 경량형 FrameWork라고 보면 좋다.
+
 
 ### Components
 한가지 기능을 수행하는 UI 단위   
