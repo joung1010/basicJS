@@ -1,5 +1,5 @@
-## React
-Components 들로 이루어진 UI 라이브러리
+## React(Components 들로 이루어진 UI 라이브러리)
+
 
 ### What's React??
 A JavaScript library for building user interface!!  
@@ -34,12 +34,21 @@ React를 통해 웹 applicatoin, React Native 를 통해 Mobile applicatoin, Rea
 대표적으로 React는 많은 해결책중에서 UI를 만들 수 있게 해주는 라이브러리 이다.  
 그러면 View는 어디에 속해있을까???  
 View는 Angular 처럼 FrameWork 에 속하지만 HTTP Clients(네트워크 통신), State management(대용량 데이터 처리)가 제공되지 않기때문에  
-조금더 경량형 FrameWork라고 보면 좋다.
-
+조금더 경량형 FrameWork라고 보면 좋다.  
+  
+### React의 철학
+* A JavaScript library for building user interface!
+  * user interface --> Renders **UI** and Response to(react to) **events**
+  * UI를 표기하고 보여주고 나서 이벤트에 반응하도록 만들어진 Library
+* 즉 UI를 Component 단위로 보여주고 이벤트에 반응하도록 만들어진 Library 이다 
 
 ### Components
-한가지 기능을 수행하는 UI 단위   
-서로 독립적이며, 고립되어있고, 재사용이 가능하다.
+A highly `cohesive building block` for UIs.  
+`loosely coupled` with other components  
+다른 Component 들과 독립적인 응집도가 정말 높은 UI 블럭  
+
+`즉, 한가지 기능을 수행하는 UI 단위`   
+`서로 독립적이며, 고립되어있고, 재사용이 가능하다.`
 
 리엑트 어플리케이션은 하나의 컴포넌트로 이루어져있다.   
 최상위에 존재하는 컴포넌트를 **Root**라고  한다.
@@ -68,7 +77,9 @@ React
 이 리엑트의 Component 들도 DOM Tree 와 마찬가지로 Tree 형식으로 만들어져 있다.
 
 --> 리엑트는 UI 만들 수 있는 라이브러리 이고, 이 리액트를 이용해서 웹어플리케이션을 만든다는 것은   
-컴포넌트들을 만든다 라고 말할 수 도 있다.
+컴포넌트들을 만든다 라고 말할 수 도 있다.  
+  
+마치 레고의 블럭 처럼 하나 하나 독립적이고 조그만한 부품들이 모여 큰 부품이 되어가는 것이 유사하다.
 
 ### 형태
 react 에서 제공하는 컴포넌트라는 클래스를 상속해야 된다.
