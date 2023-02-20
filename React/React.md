@@ -45,7 +45,7 @@ View는 Angular 처럼 FrameWork 에 속하지만 HTTP Clients(네트워크 통�
 ### Components
 A highly `cohesive building block` for UIs.  
 `loosely coupled` with other components  
-다른 Component 들과 독립적인 응집도가 정말 높은 UI 블럭  
+다른 Component 들과 독립적이고 응집도가 정말 높은 UI 블럭  
 
 `즉, 한가지 기능을 수행하는 UI 단위`   
 `서로 독립적이며, 고립되어있고, 재사용이 가능하다.`
