@@ -161,7 +161,7 @@ import React from 'react';
 class Button extends Component{
     state = {
         numberOfLikes: 0
-    }l
+    };
     render(){
     return &lt;button&gt;
         {this.state.numberOfLikes}
@@ -211,6 +211,56 @@ DOM Tree 에는 영향을 주지 않는다.
 그래서 state 에 맞게 render 함수가에서 어떻게 표기될 건지 한 번만 정리를 해 놓으면   
 react 가 알아서 render함수를 호출 해준다.  
 
+### React Hooks  
+  
+2019년도 이전 함수형 component가 나오기 전에는 class 형태로 component를 만들어 나갔다.  
+```
+class Likebutton extends Component{
+    state = { likes : 0};
+    
+    render(){
+        return <button>{this.state.likes}</button>
+    }
+}
+```
+  
+  
+클래스 컴포넌트의 단점  
+* 클래스 자체에 대한 어려움
+* this 바인딩 이슈
+* 로직들을 재사용하기 어려움  
+  
+그래서 조금더 손쉽게 로직들을 재사용하면서 class를 사용하지않고 component를 만들 수 없을까 고민하면서 나온게  
+함수형 컴포넌트이다.  
+  
+```
+function LikeButton(props){
+    const [likes,setLikes] = useState(0);
+    return <button>{likes}</button>;
+}
+```
+  
+함수형 컴포넌트는  
+* 함수로 컴포넌트를 만들 수 있다.
+* class 나 상속을 몰라도 함수로 정의하고 return 으로 jsx를 return 하는 것만 만들어두면 조금더 쉽게 컴포넌트를 만들 수 있게 되었다.
+* React Hooks 를통해 로직들을 재사용할 수 있게 되었다.
+
+  
+Hooks are functions that let you "hook into" React state and lifecycle feature from function component  
+Hooks 는 React의 State와 라이프 사이클에 관련된 기능들을 갈고리처럼 연결할 수 있는 함수들 이다.  
+즉 React 의 Hooks 는 재사용할 수 있는 함수다  
+이런 재사용 가능한 Hooks 들은 `use`로 시작한다.  
+또한 사용자가 직접 custom Hook 을 만들 수도 있다.  
+```
+    useState, useEffect, useRef, useMemo, usecallback, usecontext.....
+```
+  
+이때 자주 사용한 Hooks 들은  
+* useState  : 상태관리 로직
+* useEffect : 컴포넌트 생애주기 관리 로직
+* useUser   : 서버에서 받아온 사용자
+  
+#### 즉, Hooks은(함수들은) 값의 재사용이 아니라 **로직의 재사용**을 위한 것이다
 
 ### 공식 사이트
 [React](https://reactjs.org/docs/getting-started.html)   
