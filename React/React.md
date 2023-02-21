@@ -95,8 +95,64 @@ React
   더 작은 Component 로 분리해준다.
 
 
+### 동작 원리
+사용하는 곳
+```
+    <CounterButton name='myButton' />;
+```  
+  
+컴포넌트 정의  
+```
+export function CouterButton(props){
+    const [count,setCount] = useState(0);
+    return (
+        <div>
+            <h1>Hello, {props.name}</h1>
+            <button onClick={() => setCount((count) => count + 1)}>{count}</button>
+        </div>
+    );
+}
 
-### 형태
+```
+  
+이때 Component를 정의할때 함수형태로 정의할 수 있는데 이를 **함수형 컴포넌트**라고 한다.  
+보통 함수는 소문자로 시작하는데 React **함수형 컴포넌트**라면 무조건 대문자로 시작해야된다.  
+또한 함수형 Component는 HTML처럼 생긴 이 JSX 문법을 사용하는 것을 반환(return) 해줘야한다.  
+```
+    // render
+    return (
+        <div>
+            <h1>Hello, {props.name}</h1>
+            <button onClick={() => setCount((count) => count + 1)}>{count}</button>
+        </div>
+    );
+```  
+JSX(JavaScript XML): JavaScript 에서 함수 반환값으로 HTML 처럼 생긴것을 반환할 수 있는데 이것을 JSX라고한다.  
+```
+        <div>
+            <h1>Hello, {props.name}</h1>
+            <button onClick={() => setCount((count) => count + 1)}>{count}</button>
+        </div>
+        
+```
+  
+이때 우리가 만든 Component 는 버튼을 클릭할때마다 숫자가 하나씩 증가하는데  
+이때 Component 가 가지고 있는 데이터 , 즉 **상태**는 useState 함수를 이용하여 변수 형태로 저장한다.  
+```
+    const [count,setCount] = useState(0);
+```  
+  
+이때 함수형 Component 의 인자 값으로 props(properties)는 외부에서 전달하는 값  
+```
+    <CounterButton name='myButton' />;
+    // 해당 Component의 name 값은 props를 통해 해당 값에 접근할 수 있다.
+
+```
+
+![img](./react.png)  
+  
+
+### 형태(Class)
 react 에서 제공하는 컴포넌트라는 클래스를 상속해야 된다.
 <pre>
 <code>
@@ -123,6 +179,14 @@ render 함수는 사용자에게 어떻게 표기될 건지 JSX로 표기
 
 만약 최상위 컴퍼넌트인 Root 가 변경이되면 그 하위 자식요소의 render함수도 같이 호출된다.   
 그러면 state 가 변깅이 될때 마다 모든 render함수가 다시 호출 되는건 서능에 안좋은게 아닐까??
+
+### React의 이벤트
+React 는 Component 들의 집하체 이다.  
+이때 각각의 Component들은 그들의 상태값(Stat)를 가지고 있다.  
+사용자가 데이터를 입력하거나 클릭했을때 우리는 이 Stat, 상태값을 Update하면 된다.  
+그러면 React 에서 자동으로 이 상태값이 변경된 Component만 새롭게 Update 해준다.  
+만약 상위 Component 가 변경되면 그 하위 Component들을 모두 새롭게 Update 한다.
+
 ### Virtual Dom Tree
 브라우저의 DOM Tree 처럼 리액트도 리액트만의 Virtual Dom Tree 가 존재   
 가상의 돔 트리로 메모리상에 보관이 되어져있다.   
@@ -137,11 +201,16 @@ DOM Tree 에는 영향을 주지 않는다.
 1. 컴포넌트 변경, render 함수 호출
 2. 이전 Virtual Dom Tree 현재 Virtual Dom Tree 를 비교
 3. 실질적으로 보여지는 화면에 데이터가 변동이 되면 DOM Tree 업데이트
+   
 
-### Re-render the whole app on every update
-리엑트는 데이터가 변경이 될때마다 어플리케이션 전체를 다시 렌더링  
+### Re-render the whole app on every update  
+1. 데이터를 State(내부상태), props(외부로 부텆 전달받은 상태)를 나타내는 render가 있다.  
+2. 리엑트는 데이터가 변경이 될때마다 어플리케이션 전체를 다시 렌더링(re-render) 된다.   
+3. 실제로 변경된 부분만 화면에 업데이트된다.  
+
 그래서 state 에 맞게 render 함수가에서 어떻게 표기될 건지 한 번만 정리를 해 놓으면   
-react 가 알아서 render함수를 호출 해준다.
+react 가 알아서 render함수를 호출 해준다.  
+
 
 ### 공식 사이트
 [React](https://reactjs.org/docs/getting-started.html)   
