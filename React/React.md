@@ -273,31 +273,53 @@ Hooks 는 React의 State와 라이프 사이클에 관련된 기능들을 갈고
 2. 노드: [NodeJS](https://nodejs.org/en/)
 3. yarn : [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable), npm install yarn --global
 
-NodeJs : 자바스크립트를 실행할 수 있는 환경   
-예전에는 자바스크립트를 브라우저 위에서 동작하는 웹페이지나    
-웹 어플리케이션을 위해서 작성하는 언어였다.   
+#### NodeJs
+JavaScript runtime environment(framework) that `executes JavaScript` code `outside a web browser`  
+자바스크립트를 실행할 수 있게 해주는 JavaScript 실행환경   
+예전에는 자바스크립트를 브라우저 위에서 동작하는 웹페이지나 웹 어플리케이션을 위해서 작성하는 언어였다.   
 하지만 NodeJs 덕분에 웹브라우저 밖에서도, 즉 운영체제 위에서나 노드JS 환경이 있다면   
 우리가 작성한 자바스크립트 코드를 실행할 수 있다.   
 --> 어느 곳에서나 자바스크립트로 프로그래밍이 가능하게 하는 프레임 워크
+  
 
-npm : 패키지 매니저   
-라이브러리, 패키지들 쉽게 관리할 수 있게 도와주는 것이 npm   
-npm을 이용하면 package.json 파일이 생기는데 이패지키 안에 우리가 사용하고 있는   
+#### npm
+`Publish` and `share` course code of NodeJs packages simplify installation, updating, and uninstallation of packages  
+npm 은 패키지 매니저이다.  
+우리는 프로젝트를 만들때 우리의 코드 뿐만아니라 외부 dependency를 가지고 온다.  
+이말은 외부 library를 사용한다는 의미인데 그 library를 쉽게 설치하고 버전을 관리해주는 것이 `npm`이다.  
+
+`즉, 라이브러리, 패키지들 쉽게 관리할 수 있게 도와주는 것이 npm`   
+npm을 이용하면 package.json 파일을 프로젝트 루트에 생성하고 이 package.json 안에 우리가 사용하고 있는   
 외부 라이브러리들과 그들의 버전정보들이 들어 있다.   
 --> 설치 및 업데이트 (실행할 수는 없음)
 
-npx: 우리가 원하는 라이브러리를 실행할 수 있게 도와줌   
+#### npx
+만약 library 를 개별적으로 실행하고 싶다면 `npx`를 이용하면 된다.
+이 `npx`는 `npm`이 설치 될때 함께 설치가 되고 `npm`이 라이브러리, 패키지를 관리한다면   
+`npx`는 우리가 원하는 라이브러리를 개별적으로 실행할 수 있게 도와준다.   
 ex) npx 원하는라이브러리 이름
 
-yarn : 페이스북에서 만들어진 패키지 매니저   
-npm에서 서능, 보안 등을 개선해서 만든 패키지 매니저   
---> npm 위에서 동작하기 때문에 npm 에서 쓰는 package.json 파일 그대로 사용가능   
-npm과 호환이 가능하게 사용 가능
+#### yarn
+built on top of npm to resolve some of npm's shortcomings  
+faster, consistent, and secure  
+  
 
-설치확인
+`npm`을 대체할 수 있는 `yarn`은 페이스북에서 만든 패키지 매니저이다.  
+`npm`과 `yarn`은 서로 호환이 되기때문에 서로 바꿔가면서 사용은 할 수 있지만 권장하지는 않는다.  
+이 `yarn`은 `npm`의 단점을 커버하귀 위해서 만들어졌다.  
+`npm`은 외부 라이브러리가 많으면 많을 수록 프로젝트를 실행하는 속도가 현저하게 떨어진다.  
+그이유는 필요한 라이브러리를 하나 하나씩 순차적으로 실행하고 설치하기 때문이다.  
+
+하지만, `yarn`은 라이브러리를 병렬적으로 동시에 설치하고 실행하기 때문에 `npm`에 비해 상대적으로 빠르고  
+보완적인 측면에서도 `yarn`이 너 뛰어나다.(단 최신버전 npm은 이러한 단점들을 보완하고 있다.)  
+즉, `yarn`은 `npm`에서 서능, 보안 등을 개선해서 만든 패키지 매니저이다   
+
+
+#### 설치확인
 1. node -v
 2. npm -v
 3. yarn -v
+4. git --version
 
 ### Create React App
 <pre>
