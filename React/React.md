@@ -262,9 +262,6 @@ Hooks 는 React의 State와 라이프 사이클에 관련된 기능들을 갈고
   
 #### 즉, Hooks은(함수들은) 값의 재사용이 아니라 **로직의 재사용**을 위한 것이다
 
-### 공식 사이트
-[React](https://reactjs.org/docs/getting-started.html)   
-[Create React App](https://create-react-app.dev/docs/getting-started)
 
 ### 필요한 Tool
 1. 터미널   
@@ -320,6 +317,11 @@ faster, consistent, and secure
 2. npm -v
 3. yarn -v
 4. git --version
+
+### 공식 사이트
+[React 공식 사이트](https://reactjs.org/)   
+[React 베타 문서](https://beta.reactjs.org/)   
+[Create React App](https://create-react-app.dev/)  
 
 ### Create React App
 <pre>
