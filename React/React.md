@@ -269,6 +269,12 @@ Hooks 는 React의 State와 라이프 사이클에 관련된 기능들을 갈고
    1.2 mac: [iterm](https://iterm2.com/downloads.html) [iTerm 셋팅](https://gist.github.com/kevin-smets/8568070)
 2. 노드: [NodeJS](https://nodejs.org/en/)
 3. yarn : [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable), npm install yarn --global
+   1. [yarn installation](https://yarnpkg.com/getting-started/install)
+   2. 노드 버전이 16.10 버전 보다 크다면 `corepack enable` 명령어를 실행해줘야한다
+   3. 16.10 이전 버전이라면 `npm i -g corepack` corepack 을 설치 해준다.
+   4. cmder 에서 실행하는경우 `corepack enable` EPERM: operation not permitted 에러가 발생할 수 있다.  
+      이때 NodeJs Command Prompt를 관리자 권한으로 실행한후에 해당 명령어를 실행해주면 된다.
+   5. `yarn set version stable` 명령어를 통해 yarn 버전을 업데이트한다.
 
 #### NodeJs
 JavaScript runtime environment(framework) that `executes JavaScript` code `outside a web browser`  
