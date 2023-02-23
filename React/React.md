@@ -361,8 +361,36 @@ yarn eject : React App을 이용해서 다운로드 받은 패키지들을 확�
   어디서 다운로드 받으면 되는지 이러한 정보들이 들어있다.
   * 따라서 `pnp`는 외부 라이브러리를 설치할때 `yarn` 에서 내부적으로 필요한 파일들이다
 * yarn.lock : 외부 라이브러리를 설치할때 `yarn` 에서 내부적으로 필요한 파일들이다
+
+![img](./reactPublic.png)
+* public : static 한 리소스들이 해당 directory 에 들어간다.
+  * favicon.io
+  * index.html : React application 에서 유일하게 존재하는 HTML 파일
+    * HTML 안에는 React application 에 필요한 HEAD 정보와 `<div id="root"></div>`가 존재한다.
+  * 필요한 이미지 파일들, manifest.json 파일은 모두 PWA(progressive web app) 에 사용된다.
+    * PWA : 인터넷 웹사이트의 파일들(html, javascript, css, images같은..)을 컴퓨터에 잘~ 저장(캐싱)해 놨다가 다시 요청이 올 때 저장(캐싱)된 파일들을 먼저 보여주고 필요할 떄 웹서버에 있는 데이터를 받아서 보여주는 기술과 홈스크린에 바로가기 아이콘을 설치 할 수 있게 하는 기술, 그리고 서버의 소식을 클라이언트에 전하는 Push기술 입니다.
+  * roboto.txt : 웹 어플리케이션을 배포했을때 크롤링하는 로봇들에게 우리의 사이트에 대한 정보를 명시해 줄 수 있다.  
+
+
+![img](./reactSrc.png)
+* src : 코드로 무언가를 동적으로 생성하고 코드를 작성하는 directory
+  * App.js
+  * index.js
+  * reportWebVitals.js : WEB 사이트 성능을 측정할 수 있음
+  * setupTests.js : unit test를 할 수 있음
   
-* public
+* .gitignore : 커밋하지 말아야할 파일들을 설정해주는 곳
+* package.json 
+  * 우리 프로젝트의 정보 
+  * 외부 라이브러리의 정보들 
+  * creat react-app 을하면 기본적으로 사용할 수 있는 명령어 정보들
+  * eslintConfig 
+  * browserList(빌드하고 배포하기전에 우리가 원하는 브라우저 버전까지 지원하기 위해서 JavaScript 를 어디까지 변환해야하는지 설정) 
+    * production : 배포할때 어느 버전까지 지원할 것인지 설정
+    * development : 개발할때 어느 버전가지 지원할 것인지 설정
+
+
+ 
 
 
 ### Babel
