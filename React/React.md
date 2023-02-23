@@ -395,24 +395,32 @@ yarn eject : React App을 이용해서 다운로드 받은 패키지들을 확�
 
 프로젝트 안에서 `yarn eject` 명령어를 수행하면 package 안에 있던 것들이 모두 풀려서 보여지고 한번 풀면 되돌릴 수 없다.  
 
-### Babel
+### Babel(Javascript transcompiler)
 바벨은 자바스크립트 튼랜스 컴파일러   
 convert ECMAScript 2015+ -> older version   
 TypeScript, JSX -> JavaScript   
+개발할때 사용자의 브라우저를 걱정하지 않고 최신버전으로 개발할 수 있고  
+타입스크립트와 같이 타입이 적용되는 프로그래밍을 할 수 있게 해주는 것이 `바벨`이다  
 -> 예전 버전의 브라우저가 이해할 수 있는 소스코드로 변환해줌
-### Webpack
+### Webpack(Building the code, JavaScript module bundler)
+우리의 코드를 잘 포장해서 사용자에게 배포할 수 있게 도와주는 모듈 번들러이다.  
+![img](./webpack.png)  
+  
+
 우리가 작성한 소스코드, 이미지들을 한 번에 묶어서 번들 단위로 사용자가에게 제공을 도와줌   
 메인 페이지를 열었을때 자바스크립트 abc 가 필요하고 특정 이미지가 필요하면   
 이것을 잘 묶어서 사용자에게 보내주고 사용자가 다시 다른페이지를 열어서 그페이지에   
-필요한 Javascript 이미지 등을 잘 묶어서 다시 보내준다.   
+필요한 Javascript 이미지 등을 잘 묶어서 다시 보내주는 번들링 작업을 해준다.  
+
 또한 우리가 작성한 자바스크립트를 소스코드를 조금 줄여주고   
-긴변수나 함수의 이름을 다른사람들이 알아 보지 못하도록 이름을 조금 이상하게 만들어 놓는   
-그런일 도 하고 있음
-### ESLint
+긴변수나 함수의 이름을 다른사람들이 알아 보지 못하도록 이름을 조금 이상하게 만들어 놓고   
+쓰이지 않는 코드는 삭제하고 코드를 압축하고 주석을 제거하고 사용자에게 전달하고 css파일이름을 조금 축약된 버전으로 만들어서 파일 사이즈를 줄여주는등 많은 일들을 담당한다.  
+
+### ESLint(Checking your code)
 즉각적으로 우리의 코드가 잘못된 것이 있다면 경고 사인을 보내줌
-### Jest
+### Jest(delightful JavaScript testing framework)
 유닛 테스트를 할 수 있게 도와주는 테스팅 프레임워크
-### PostCSS
+### PostCSS(expandable CSS library tool for transforming CSS with JavaScript)
 CSS 전처리기중 하나   
 expandable CSS libraries tool for transforming CSS with Javascript
 ### 브라우저 개발툴
