@@ -390,8 +390,10 @@ yarn eject : React App을 이용해서 다운로드 받은 패키지들을 확�
     * development : 개발할때 어느 버전가지 지원할 것인지 설정
 
 
- 
+ #### 숨겨진 툴살펴보기  
+![img](./reactEject.png)  
 
+프로젝트 안에서 `yarn eject` 명령어를 수행하면 package 안에 있던 것들이 모두 풀려서 보여지고 한번 풀면 되돌릴 수 없다.  
 
 ### Babel
 바벨은 자바스크립트 튼랜스 컴파일러   
